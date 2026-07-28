@@ -1,0 +1,32 @@
+[
+	{
+		"pageNumber": 1,
+		"title": "Capítulo I: El Encuentro",
+		"narration": "En el vasto cosmos digital, dos almas se encontraron. Como Odiseo guiado por las estrellas, nuestros caminos convergieron en el lugar más inesperado. Fue el comienzo de un viaje épico que abarcaría años y kilómetros.",
+		"visualUrl": "/images/odyssey-1.jpg"
+	},
+	{
+		"pageNumber": 2,
+		"title": "Capítulo II: La Primera Tormenta",
+		"narration": "Nuestro primer desafío llegó como una tempestad en el mar. Malentendidos y dudas amenazaron con arruinarnos. Pero como verdaderos héroes, enfrentamos la tormenta juntos, emergiendo más fuertes del otro lado.",
+		"visualUrl": "/images/odyssey-2.jpg"
+	},
+	{
+		"pageNumber": 3,
+		"title": "Capítulo III: La Isla de la Alegría",
+		"narration": "Descubrimos nuestra propia Ítaca - un lugar de pura felicidad. Conversaciones nocturnas, risas compartidas y susurros de sueños en la oscuridad. Estos momentos se convirtieron en nuestro tesoro, nuestro ancla en la tormenta.",
+		"visualUrl": "/images/odyssey-3.jpg"
+	},
+	{
+		"pageNumber": 4,
+		"title": "Capítulo IV: El Largo Viaje",
+		"narration": "Los kilómetros se extendían entre nosotros como el mar interminable. Pero la distancia solo hizo crecer nuestro amor. Aprendimos que el amor no se trata de proximidad, sino de conexión que trasciende el espacio y el tiempo.",
+		"visualUrl": "/images/odyssey-4.jpg"
+	},
+	{
+		"pageNumber": 5,
+		"title": "Capítulo V: La Promesa",
+		"narration": "Mientras nuestra historia continúa, hacemos una promesa - navegar cada tormenta, celebrar cada calma, y siempre encontrar el camino de regreso el uno al otro. Nuestra odisea está lejos de terminar.",
+		"visualUrl": "/images/odyssey-5.jpg"
+	}
+]

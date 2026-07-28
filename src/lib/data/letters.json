@@ -1,0 +1,50 @@
+[
+	{
+		"day": 1,
+		"date": "1 de Agosto",
+		"title": "El Comienzo",
+		"text": "Mi amor más querido, mientras escribo esta primera carta, recuerdo cómo todo comenzó. Las 4 estaciones que hemos compartido han sido el viaje más hermoso de mi vida. Cada momento contigo es un regalo que nunca supe que necesitaba.",
+		"imageUrl": "/images/letter-1.jpg",
+		"secretDigit": 4
+	},
+	{
+		"day": 2,
+		"date": "2 de Agosto",
+		"title": "La Primera Chispa",
+		"text": "¿Recuerdas cuando nos conectamos por primera vez? Fue como encontrar la pieza que faltaba en un rompecabezas. Nuestras conversaciones de 7 horas se sentían como minutos. El tiempo se detenía cuando estábamos juntos, y supe que esto era algo especial.",
+		"imageUrl": "/images/letter-2.jpg",
+		"secretDigit": 7
+	},
+	{
+		"day": 3,
+		"date": "3 de Agosto",
+		"title": "Creciendo Juntos",
+		"text": "A través de los altos y bajos, siempre hemos encontrado el camino de regreso el uno al otro. Como los 2 contra el mundo, hemos construido algo hermoso. Tu risa sigue siendo mi sonido favorito en todo el universo.",
+		"imageUrl": "/images/letter-3.jpg",
+		"secretDigit": 2
+	},
+	{
+		"day": 4,
+		"date": "4 de Agosto",
+		"title": "Nuestras Aventuras",
+		"text": "Desde llamadas nocturnas hasta aventuras espontáneas, cada momento es un tesoro. Llevo 9 recuerdos de nosotros en mi corazón, cada uno más precioso que el anterior. Tú conviertes los días ordinarios en extraordinarios.",
+		"imageUrl": "/images/letter-4.jpg",
+		"secretDigit": 9
+	},
+	{
+		"day": 5,
+		"date": "5 de Agosto",
+		"title": "La Distancia Entre Nosotros",
+		"text": "Los kilómetros nos separan, pero nuestros corazones siempre están conectados. En los 5 años que nos conocemos, he aprendido que el amor no conoce fronteras. Siempre estás a un pensamiento de distancia.",
+		"imageUrl": "/images/letter-5.jpg",
+		"secretDigit": 5
+	},
+	{
+		"day": 6,
+		"date": "6 de Agosto",
+		"title": "Por Siempre y Para Siempre",
+		"text": "Mientras nos acercamos a nuestro aniversario, quiero que sepas que mi amor por ti crece más fuerte cada día. Como 1 llama eterna, nuestro amor arde brillante y verdadero. No puedo esperar para pasar el resto de mi vida contigo.",
+		"imageUrl": "/images/letter-6.jpg",
+		"secretDigit": 1
+	}
+]

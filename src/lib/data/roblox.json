@@ -1,0 +1,60 @@
+{
+	"experiences": [
+		{
+			"title": "Primera Cita Virtual",
+			"description": "Nuestra primera noche de cine oficial juntos por Discord.",
+			"image": "/images/exp-1.jpg"
+		},
+		{
+			"title": "Maratón de Juegos",
+			"description": "12 horas jugando juntos, riendo hasta que nos dolió el estómago.",
+			"image": "/images/exp-2.jpg"
+		},
+		{
+			"title": "Noche de Karaoke",
+			"description": "Cantando a todo pulmón, desafinados pero llenos de amor.",
+			"image": "/images/exp-3.jpg"
+		},
+		{
+			"title": "Estudiando Juntos",
+			"description": "Compañía silenciosa mientras trabajamos en nuestras metas.",
+			"image": "/images/exp-4.jpg"
+		}
+	],
+	"achievements": [
+		{
+			"title": "Primer Mensaje",
+			"icon": "💬"
+		},
+		{
+			"title": "100 Días Juntos",
+			"icon": "💯"
+		},
+		{
+			"title": "Primera Llamada",
+			"icon": "📞"
+		},
+		{
+			"title": "Noche sin Dormir",
+			"icon": "🌙"
+		},
+		{
+			"title": "Destructor de Distancias",
+			"icon": "✈️"
+		},
+		{
+			"title": "Sanador de Corazones",
+			"icon": "❤️"
+		}
+	],
+	"profile": {
+		"username": "Mi Jugador Por Siempre",
+		"bio": "En una relación a distancia desde 2021. El amor no conoce distancias.",
+		"stats": {
+			"hoursTalked": 2500,
+			"messagesSent": 45000,
+			"daysTogether": 1095,
+			"virtualDates": 150
+		}
+	}
+}

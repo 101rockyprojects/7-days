@@ -1,0 +1,58 @@
+{
+	"partnerName": "Mi Amor",
+	"passcode": "472951",
+	"dateRange": {
+		"start": "2024-08-01",
+		"end": "2024-08-07"
+	},
+	"comfortMessages": [
+		"Cada número cuenta una historia de nosotros...",
+		"Tómate tu tiempo, yo estaré aquí esperando...",
+		"Los recuerdos valen más que cualquier código...",
+		"Piensa en nuestro viaje juntos...",
+		"Cada dígito guarda una parte de nuestro amor..."
+	],
+	"hints": [
+		"Recuerda los números ocultos en nuestras cartas diarias...",
+		"Los dígitos secretos están repartidos en seis días de amor...",
+		"Cada carta contiene un solo dígito, del día 1 al día 6..."
+	],
+	"phases": {
+		"letters": "Cartas Diarias",
+		"vault": "La Cámara del Tesoro",
+		"menu": "Nuestro Mundo",
+		"receipt": "El Recibo de Amor",
+		"roblox": "Nuestras Aventuras",
+		"odyssey": "La Odisea"
+	},
+	"ui": {
+		"back": "Volver",
+		"revealSecret": "Revelar Secreto",
+		"secretRevealed": "Secreto Revelado",
+		"scrollToReveal": "Desplázate para revelar más",
+		"submit": "Ingresar",
+		"previous": "Anterior",
+		"next": "Siguiente",
+		"useArrowKeys": "Usa las teclas ← → o desliza para navegar",
+		"day": "Día",
+		"vaultTitle": "La Cámara del Tesoro",
+		"vaultSubtitle": "Ingresa el código de 6 dígitos",
+		"vaultHint": "Pista: Los números están ocultos en las cartas diarias",
+		"welcomeTo": "Bienvenido a Nuestro Mundo",
+		"threeYears": "Tres años de amor, aventura y recuerdos",
+		"receiptTitle": "RECIBO DE SERVICIOS",
+		"receiptCompany": "Amor & Cía. - Est. 2021",
+		"receiptTotal": "TOTAL: AMOR INFINITO",
+		"receiptThankYou": "Gracias por tu fidelidad",
+		"experiences": "Experiencias",
+		"achievements": "Logros",
+		"profile": "Perfil",
+		"hoursTalked": "Horas Habladas",
+		"messagesSent": "Mensajes Enviados",
+		"daysTogether": "Días Juntos",
+		"virtualDates": "Citas Virtuales",
+		"newBadge": "NUEVO",
+		"unlocked": "Desbloqueado",
+		"keyboardHint": "Usa las teclas ← → o haz clic en los botones"
+	}
+}
