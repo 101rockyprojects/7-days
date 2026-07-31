@@ -58,21 +58,8 @@
 		"text": "Los kilómetros nos separan, pero nuestros corazones siempre están conectados. En los 5 años que nos conocemos, he aprendido que el amor no conoce fronteras. Siempre estás a un pensamiento de distancia.",
 		"imageUrl": "/images/letter-5.jpg",
 		"background": {
-			"back": "/images/night-wall.jpeg"
+			"back": "/images/sky-paper.jpeg"
 		},
 		"secretDigit": 5
-	},
-	{
-		"day": 6,
-		"date": "6 de Agosto",
-		"title": "Por Siempre y Para Siempre",
-		"text": "Mientras nos acercamos a nuestro aniversario, quiero que sepas que mi amor por ti crece más fuerte cada día. Como 1 llama eterna, nuestro amor arde brillante y verdadero. No puedo esperar para pasar el resto de mi vida contigo.",
-		"imageUrl": "/images/letter-6.jpg",
-		"background": {
-			"back": "/images/lighthome.jpeg",
-			"middle": "/images/lighthome-middle.webp",
-			"front": "/images/lighthome-front.webp"
-		},
-		"secretDigit": 1
 	}
 ]

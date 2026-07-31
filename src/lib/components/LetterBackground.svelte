@@ -70,7 +70,7 @@
 
 		{#if frontImage}
 			<div
-				class="letter-bg-layer front-layer max-w-2xl mx-auto"
+				class="letter-bg-layer front-layer mx-auto"
 				style="transform: {frontTransform}; will-change: transform;"
 			>
 				<img
@@ -108,21 +108,21 @@
 	}
 
 	.back-layer {
-		filter: brightness(0.85);
+		filter: brightness(0.75);
 		scale: 0.85;
+		min-height: 100vh;
 	}
 
 	.middle-layer {
 		filter: drop-shadow(5px -18px 40px rgba(0, 0, 0, 0.4));
-		filter: brightness(0.95);
+		filter: brightness(0.9);
 		scale: 1;
 		margin-top: 5%;
-		min-width: 100vw;
 	}
 
 	.front-layer {
 		filter: drop-shadow(5px -18px 20px rgba(0, 0, 0, 0.8));
 		filter: brightness(1.05);
-		scale: 1.15;
+		scale: calc(1 + 0.05 * 5dvh);
 	}
 </style>

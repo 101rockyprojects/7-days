@@ -126,7 +126,7 @@
 		<header class="fixed bottom-4 left-4 z-50">
 			<button
 				onclick={handleBack}
-				class="flex items-center gap-2 px-3 py-2 glass rounded-lg border border-white/10 text-white hover:text-[#E8C84A] hover:border-[#AC8400]/30 transition-all duration-200 group"
+				class="flex items-center gap-2 px-3 py-2 glass rounded-lg border border-white/10 text-white hover:text-[#E8C84A] hover:border-[#AC8400] transition-all duration-200 group"
 				aria-label="Volver"
 			>
 				<svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
