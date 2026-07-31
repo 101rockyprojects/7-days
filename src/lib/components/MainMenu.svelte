@@ -2,26 +2,22 @@
 	/**
 	 * MainMenu Component
 	 * 3D card grid for navigating to the three sections
-	 * Enhanced with immersive card effects and smooth transitions
+	 * Enhanced with parallax environment cards
 	 */
 
-	let { onSelect, partnerName = 'Mi Amor' } = $props();
+	import EnvironmentCard from './EnvironmentCard.svelte';
 
-	// State
-	let hoveredCard = $state(null);
-	let mousePosition = $state({ x: 0, y: 0 });
+	let { onSelect, partnerName = 'Mi Amor', isDay7Unlocked = false } = $props();
 
-	// Sections configuration
-	const sections = [
+	// Sections configuration with environments
+	const baseSections = [
 		{
 			id: 'receipt',
 			title: 'El Recibo',
 			subtitle: 'Servicios de Amor',
 			icon: '🧾',
 			description: 'Un recibo lúdico de todos los servicios de amor prestados',
-			gradient: 'from-white via-gray-50 to-gray-100',
-			textColor: 'text-gray-800',
-			accentColor: '#8B0000',
+			environment: 'field',
 			active: true
 		},
 		{
@@ -30,9 +26,7 @@
 			subtitle: 'Memorias de Juegos',
 			icon: '🎮',
 			description: 'Citas virtuales y aventuras de gaming juntos',
-			gradient: 'from-[#722F37] to-[#4A0404]',
-			textColor: 'text-white',
-			accentColor: '#CC0000',
+			environment: 'mountains',
 			active: false
 		},
 		{
@@ -41,121 +35,135 @@
 			subtitle: 'Nuestra Historia Épica',
 			icon: '📖',
 			description: 'La gran narrativa de nuestro amor',
-			gradient: 'from-[#4A0404] to-[#2a0202]',
-			textColor: 'text-[#FFFDD0]',
-			accentColor: '#D4AF37',
+			environment: 'palace',
 			active: false
 		}
 	];
 
-	// Handle mouse move for 3D effect
-	function handleMouseMove(event, sectionId) {
-		const rect = event.currentTarget.getBoundingClientRect();
-		const x = (event.clientX - rect.left) / rect.width - 0.5;
-		const y = (event.clientY - rect.top) / rect.height - 0.5;
-		mousePosition = { x, y };
-	}
+	const reviewSection = {
+		id: 'review',
+		title: 'Tu Reseña',
+		subtitle: 'Califica Nuestro Amor',
+		icon: '📝',
+		description: 'Tu opinión me hace mejor cada día',
+		environment: 'sky',
+		active: false,
+		isNew: true
+	};
 
-	function handleMouseLeave() {
-		hoveredCard = null;
-		mousePosition = { x: 0, y: 0 };
-	}
+	let sections = $derived(isDay7Unlocked ? [...baseSections, reviewSection] : baseSections);
 </script>
 
-<div class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 bg-gradient-to-b from-[#0a0a0a] via-[#0f0505] to-[#0a0a0a]">
+<div class="min-h-screen bg-[#0a0a0a]">
 	<!-- Background Particles -->
 	<div class="absolute inset-0 overflow-hidden pointer-events-none">
 		{#each Array(20) as _, i}
 			<div
-				class="absolute w-1 h-1 bg-[#D4AF37]/20 rounded-full animate-float"
+				class="absolute w-1 h-1 bg-[#AC8400]/20 rounded-full animate-float"
 				style="left: {Math.random() * 100}%; top: {Math.random() * 100}%; animation-delay: {Math.random() * 5}s; animation-duration: {3 + Math.random() * 4}s;"
 			></div>
 		{/each}
 	</div>
 
 	<!-- Welcome Header -->
-	<header class="relative text-center mb-12 md:mb-16 space-y-4">
+	<header class="relative text-center mb-12 md:mb-16 space-y-4 pt-8">
 		<div class="animate-zoom-in-down">
-			<h1 class="text-4xl md:text-6xl lg:text-7xl font-[var(--font-felipa)] text-gold-gradient leading-tight">
+			<h1 class="text-4xl md:text-6xl lg:text-7xl font-[family-name:var(--font-felipa)] text-gold-gradient leading-tight">
 				Hola, {partnerName}
 			</h1>
 		</div>
 		<div class="animate-fade-in-up" style="animation-delay: 200ms;">
-			<p class="text-[#FFFDD0]/60 font-[var(--font-cinzel)] text-base md:text-lg tracking-wide">
+			<p class="text-[#D2CFA0]/60 font-[family-name:var(--font-cinzel)] text-base md:text-lg tracking-wide">
 				Tres años de amor, aventura y recuerdos
 			</p>
 			<div class="mt-4 flex items-center justify-center gap-3">
-				<div class="w-12 h-px bg-gradient-to-r from-transparent to-[#D4AF37]/50"></div>
-				<span class="text-[#D4AF37] text-sm">❤️</span>
-				<div class="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]/50"></div>
+				<div class="w-12 h-px bg-gradient-to-r from-transparent to-[#AC8400]/50"></div>
+				<span class="text-[#AC8400] text-sm">❤️</span>
+				<div class="w-12 h-px bg-gradient-to-l from-transparent to-[#AC8400]/50"></div>
 			</div>
 		</div>
 	</header>
 
-	<!-- 3D Card Grid -->
-	<div class="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl w-full">
+	<!-- Environment Card Grid -->
+	<div class="relative grid grid-cols-1 {isDay7Unlocked ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'} gap-6 md:gap-8 max-w-6xl w-full px-4">
 		{#each sections as section, index}
-			<button
-				onclick={() => onSelect(section.id)}
-				onmouseenter={() => (hoveredCard = section.id)}
-				onmouseleave={handleMouseLeave}
-				onmousemove={(e) => handleMouseMove(e, section.id)}
-				class="card-3d group relative rounded-2xl text-left transition-all duration-500 overflow-hidden
-					{section.active
-						? 'bg-gradient-to-br ' + section.gradient + ' border border-white/10 hover:border-white/20'
-						: 'bg-gradient-to-br ' + section.gradient + ' border border-white/5 hover:border-white/10'}
-					{hoveredCard === section.id ? 'z-10 scale-[1.02]' : ''}"
-				style="animation-delay: {index * 150}ms; transform: perspective(1000px) rotateY({hoveredCard === section.id ? mousePosition.x * 10 : 0}deg) rotateX({hoveredCard === section.id ? -mousePosition.y * 10 : 0}deg);"
-			>
-				<!-- Card Content -->
-				<div class="relative p-6 md:p-8 min-h-[280px] flex flex-col">
-					<!-- Icon -->
-					<div class="text-5xl md:text-6xl mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
-						{section.icon}
+			<div class="animate-fade-in-up {section.isNew ? 'animate-review-glow' : ''}" style="animation-delay: {index * 150}ms;">
+				<EnvironmentCard
+					environmentId={section.environment}
+					title={section.title}
+					subtitle={section.subtitle}
+					icon={section.icon}
+					description={section.description}
+					onclick={() => onSelect(section.id)}
+					active={section.active}
+				/>
+				{#if section.isNew}
+					<div class="absolute -top-2 -right-2 px-2 py-0.5 bg-[#AC8400] text-[#0a0a0a] text-xs font-bold rounded-full animate-pulse z-10">
+						✨ NUEVO
 					</div>
-
-					<!-- Title -->
-					<h2 class="text-2xl md:text-3xl font-[var(--font-slackey)] {section.textColor} mb-2 transition-all duration-300">
-						{section.title}
-					</h2>
-
-					<!-- Subtitle -->
-					<p class="text-[#FFFDD0]/60 font-[var(--font-cinzel)] text-xs tracking-wider uppercase mb-4">
-						{section.subtitle}
-					</p>
-
-					<!-- Description -->
-					<p class="text-[#FFFDD0]/50 text-sm font-[var(--font-atkinson)] leading-relaxed flex-grow">
-						{section.description}
-					</p>
-
-					<!-- Bottom Action -->
-					<div class="mt-6 flex items-center gap-2 text-[#D4AF37] opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-						<span class="font-[var(--font-cinzel)] text-sm">Explorar</span>
-						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-						</svg>
-					</div>
-
-					<!-- Hover Glow Effect -->
-					<div
-						class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-						style="background: radial-gradient(circle at {50 + mousePosition.x * 50}% {50 + mousePosition.y * 50}%, {section.accentColor}20, transparent 50%);"
-					></div>
-				</div>
-
-				<!-- Visual Distinction for Inactive Sections -->
-				{#if !section.active}
-					<div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/40 to-transparent pointer-events-none"></div>
 				{/if}
-			</button>
+			</div>
 		{/each}
 	</div>
 
 	<!-- Footer Note -->
 	<footer class="mt-12 md:mt-16 text-center animate-fade-in-up" style="animation-delay: 600ms;">
-		<p class="text-[#FFFDD0]/30 text-sm font-[var(--font-qwitcher)] italic">
+		<p class="text-[#D2CFA0]/30 text-sm font-[family-name:var(--font-script)] italic">
 			Cada sección guarda una pieza de nuestra historia...
 		</p>
 	</footer>
 </div>
+
+<style>
+	/* Animation keyframes */
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes zoomInDown {
+		from {
+			transform: translateY(-60px) scale(0.8);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0) scale(1);
+			opacity: 1;
+		}
+	}
+
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+
+	.animate-fade-in-up {
+		animation: fadeInUp 0.6s ease-out forwards;
+		opacity: 0;
+	}
+
+	.animate-zoom-in-down {
+		animation: zoomInDown 0.8s ease-out forwards;
+	}
+
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
+
+	.text-gold-gradient {
+		background: linear-gradient(135deg, #E8C84A, #AC8400, #B8962E);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+</style>
