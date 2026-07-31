@@ -5,6 +5,8 @@
 	 * Enhanced with smooth reveal animations and tactile interactions
 	 */
 
+	import { base } from '$app/paths';
+
 	let {
 		day = 1,
 		date = '',
@@ -63,7 +65,7 @@
 			<div class="relative aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden">
 				{#if imageUrl}
 					<img
-						src={imageUrl}
+						src="{base}{imageUrl}"
 						alt="Carta día {day}"
 						class="w-full h-full object-cover"
 						loading="lazy"

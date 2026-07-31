@@ -5,6 +5,8 @@
 	 * Two pages rendered simultaneously for smooth transitions
 	 */
 
+	import { base } from '$app/paths';
+
 	let { pages = [] } = $props();
 
 	let currentPage = $state(0);
@@ -133,7 +135,7 @@
 						</div>
 						{#if nextPageData.visualUrl}
 							<div class="mb-6 rounded-lg overflow-hidden shadow-lg mx-auto max-w-md">
-								<img src={nextPageData.visualUrl} alt={nextPageData.title} class="w-full h-40 md:h-52 object-cover" loading="lazy" />
+								<img src="{base}{nextPageData.visualUrl}" alt={nextPageData.title} class="w-full h-40 md:h-52 object-cover" loading="lazy" />
 							</div>
 						{:else}
 							<div class="mb-6 h-40 md:h-52 bg-gradient-to-br from-[#AC8400]/10 to-[#8B0000]/10 rounded-lg flex items-center justify-center border border-[#AC8400]/10">
@@ -174,7 +176,7 @@
 						</div>
 						{#if currentPageData.visualUrl}
 							<div class="mb-6 rounded-lg overflow-hidden shadow-lg mx-auto max-w-md">
-								<img src={currentPageData.visualUrl} alt={currentPageData.title} class="w-full h-40 md:h-52 object-cover" loading="lazy" />
+								<img src="{base}{currentPageData.visualUrl}" alt={currentPageData.title} class="w-full h-40 md:h-52 object-cover" loading="lazy" />
 							</div>
 						{:else}
 							<div class="mb-6 h-40 md:h-52 bg-gradient-to-br from-[#AC8400]/10 to-[#8B0000]/10 rounded-lg flex items-center justify-center border border-[#AC8400]/10">

@@ -5,6 +5,8 @@
 	 * Enhanced with authentic gaming UI aesthetics
 	 */
 
+	import { base } from '$app/paths';
+
 	let { data = { experiences: [], achievements: [], profile: {} } } = $props();
 
 	// State
@@ -54,7 +56,7 @@
 							<div class="aspect-video bg-gradient-to-br from-[#2b0d0d] to-[#1a0a0a] relative overflow-hidden">
 								{#if experience.image}
 									<img
-										src={experience.image}
+										src="{base}{experience.image}"
 										alt={experience.title}
 										class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
 										loading="lazy"

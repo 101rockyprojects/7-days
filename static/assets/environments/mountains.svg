@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <!-- Sky gradient -->
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A237E"/>
+      <stop offset="100%" style="stop-color:#7B1FA2"/>
+    </linearGradient>
+    <!-- Snow gradient -->
+    <linearGradient id="snow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#E1F5FE"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="400" height="300" fill="url(#sky)"/>
+  
+  <!-- Distant mountains -->
+  <polygon points="0,300 100,120 200,300" fill="#4A148C" opacity="0.7"/>
+  <polygon points="150,300 280,80 400,300" fill="#6A1B9A" opacity="0.8"/>
+  <polygon points="50,300 180,150 310,300" fill="#9C27B0" opacity="0.6"/>
+  
+  <!-- Snow caps -->
+  <polygon points="260,100 280,80 300,100" fill="url(#snow)"/>
+  <polygon points="85,140 100,120 115,140" fill="url(#snow)"/>
+  
+  <!-- Pine trees -->
+  <polygon points="50,300 60,200 70,300" fill="#1B5E20"/>
+  <polygon points="320,300 335,180 350,300" fill="#2E7D32"/>
+  <polygon points="180,300 195,220 210,300" fill="#1B5E20"/>
+  
+  <!-- Clouds -->
+  <ellipse cx="100" cy="60" rx="40" ry="15" fill="#E1F5FE" opacity="0.6"/>
+  <ellipse cx="300" cy="80" rx="35" ry="12" fill="#E1F5FE" opacity="0.5"/>
+</svg>

@@ -5,6 +5,7 @@
 	 * Uses ParallaxScene for depth effects
 	 */
 
+	import { base } from '$app/paths';
 	import { getEnvironment } from '$lib/config/parallax.js';
 	import ParallaxScene from './ParallaxScene.svelte';
 	import ParallaxLayer from './ParallaxLayer.svelte';
@@ -39,7 +40,7 @@
 		<!-- Background Image -->
 		<div class="env-background" style={backgroundStyle}>
 			<img
-				src={env.background.image}
+				src="{base}{env.background.image}"
 				alt=""
 				class="env-image"
 				loading="lazy"

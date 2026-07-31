@@ -5,6 +5,7 @@
 	 * Renders transparent if no images provided
 	 */
 
+	import { base } from '$app/paths';
 	import { useDeviceMotion } from '$lib/composables/useDeviceMotion.svelte.js';
 
 	let {
@@ -45,7 +46,7 @@
 				style="transform: {backTransform}; will-change: transform;"
 			>
 				<img
-					src={backImage}
+					src="{base}{backImage}"
 					alt=""
 					class="letter-bg-img object-cover"
 					draggable="false"
@@ -59,7 +60,7 @@
 				style="transform: {middleTransform}; will-change: transform;"
 			>
 				<img
-					src={middleImage}
+					src="{base}{middleImage}"
 					alt=""
 					class="letter-bg-img object-cover"
 					draggable="false"
@@ -73,7 +74,7 @@
 				style="transform: {frontTransform}; will-change: transform;"
 			>
 				<img
-					src={frontImage}
+					src="{base}{frontImage}"
 					alt=""
 					class="letter-bg-img object-contain"
 					draggable="false"
