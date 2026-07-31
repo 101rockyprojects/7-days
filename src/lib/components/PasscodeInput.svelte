@@ -112,11 +112,11 @@
 	<div class="fixed inset-0 z-[100] bg-[#0a0a0a]">
 		<div class="min-h-screen flex items-center justify-center">
 			<div class="text-center animate-zoom-in">
-				<div class="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8962E] flex items-center justify-center animate-pulse-glow">
+				<div class="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-[#AC8400] to-[#B8962E] flex items-center justify-center animate-pulse-glow">
 					<span class="text-6xl">🔓</span>
 				</div>
-				<h1 class="text-4xl md:text-6xl font-[var(--font-uncial)] text-gold-gradient animate-zoom-in-down">
-					Bienvenido
+				<h1 class="text-4xl md:text-6xl font-[family-name:var(--font-uncial)] text-gold-gradient animate-zoom-in-down">
+					Buena chica ;)
 				</h1>
 			</div>
 		</div>
@@ -127,10 +127,10 @@
 	<div class="text-center space-y-10">
 		<!-- Vault Icon -->
 		<div class="relative inline-block">
-			<div class="absolute inset-0 bg-[#D4AF37]/20 rounded-full blur-2xl animate-pulse"></div>
+			<div class="absolute inset-0 bg-[#AC8400]/20 rounded-full blur-2xl animate-pulse"></div>
 			<div
-				class="relative wax-seal w-28 h-28 flex items-center justify-center text-5xl transition-all duration-500
-					{isUnlocked ? 'scale-110 shadow-xl shadow-[#D4AF37]/50' : ''}"
+				class="relative wax-seal w-28 h-28 flex items-center justify-center text-5xl transition-all duration-500 overflow-visible
+					{isUnlocked ? 'scale-110 shadow-xl shadow-[#AC8400]/50' : ''}"
 			>
 				{isUnlocked ? '🔓' : '🔐'}
 			</div>
@@ -138,11 +138,11 @@
 
 		<!-- Title -->
 		<div class="space-y-2">
-			<h1 class="text-3xl md:text-5xl font-[var(--font-uncial)] text-gold-gradient">
+			<h1 class="text-3xl md:text-5xl font-[family-name:var(--font-uncial)] text-gold-gradient">
 				La Cámara del Tesoro
 			</h1>
-			<p class="text-[#FFFDD0]/70 font-[var(--font-cinzel)] text-sm tracking-wide">
-				Ingresa el código de 6 dígitos
+			<p class="text-[#D2CFA0]/70 font-[family-name:var(--font-cinzel)] text-sm tracking-wide">
+				Ingresa el código de <span class="font-bold text-accent-gold">6</span> dígitos
 			</p>
 		</div>
 
@@ -152,14 +152,14 @@
 			onpaste={handlePaste}
 		>
 			<!-- Background Glow -->
-			<div class="absolute inset-0 bg-[#D4AF37]/5 rounded-2xl blur-xl"></div>
+			<div class="absolute inset-0 bg-[#AC8400]/5 rounded-2xl blur-xl"></div>
 
 			<div class="relative flex justify-center gap-3 md:gap-4">
 				{#each digits as _, index}
 					<div class="relative">
 						<!-- Active Indicator -->
 						{#if activeInput === index && !digits[index]}
-							<div class="absolute -inset-1 bg-[#D4AF37]/20 rounded-xl animate-pulse"></div>
+							<div class="absolute -inset-1 bg-[#AC8400]/20 rounded-xl animate-pulse"></div>
 						{/if}
 
 						<input
@@ -172,20 +172,21 @@
 							oninput={(e) => handleInput(index, e)}
 							onkeydown={(e) => handleKeydown(index, e)}
 							onfocus={() => (activeInput = index)}
-							class="relative w-12 h-14 md:w-14 md:h-16 text-center text-2xl md:text-3xl font-bold rounded-xl border-2 transition-all duration-300
+							class="relative w-10 h-12 md:w-12 md:h-14 text-center text-2xl md:text-3xl font-bold rounded-xl border-2 transition-all duration-300
 								{digits[index]
-									? 'border-[#D4AF37] bg-gradient-to-b from-[#2b0d0d] to-[#1a0a0a] text-[#D4AF37] shadow-lg shadow-[#D4AF37]/20'
+									? 'border-[#AC8400] bg-gradient-to-b from-[#2b0d0d] to-[#1a0a0a] text-[#AC8400] shadow-lg shadow-[#AC8400]/20'
 									: activeInput === index
-										? 'border-[#D4AF37]/60 bg-[#0a0a0a] text-white'
-										: 'border-[#D4AF37]/20 bg-[#0a0a0a] text-white hover:border-[#D4AF37]/40'}
-								focus:border-[#D4AF37] focus:shadow-lg focus:shadow-[#D4AF37]/30 focus:outline-none"
+										? 'border-[#AC8400]/60 bg-[#0a0a0a] text-white'
+										: 'border-[#AC8400]/20 bg-[#0a0a0a] text-white hover:border-[#AC8400]/40'}
+								focus:border-[#AC8400] focus:shadow-lg focus:shadow-[#AC8400]/30 focus:outline-none"
 							aria-label="Dígito {index + 1}"
 							autocomplete="off"
+							autofocus
 						/>
 
 						<!-- Dot Indicator -->
 						{#if digits[index]}
-							<div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#D4AF37] rounded-full"></div>
+							<div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#AC8400] rounded-full"></div>
 						{/if}
 					</div>
 				{/each}
@@ -197,12 +198,12 @@
 			<div class="space-y-3 animate-fade-in-up">
 				<div class="inline-flex items-center gap-2 px-4 py-2 bg-[#CC0000]/10 border border-[#CC0000]/30 rounded-full">
 					<span class="text-[#CC0000]">💔</span>
-					<p class="text-[#CC0000] font-[var(--font-cinzel)] text-sm">
+					<p class="text-[#CC0000] font-[family-name:var(--font-cinzel)] text-sm">
 						{errorMessage}
 					</p>
 				</div>
 				{#if hintMessage}
-					<p class="text-[#D4AF37]/50 text-sm italic font-[var(--font-qwitcher)]">
+					<p class="text-[#AC8400]/50 text-sm italic font-[family-name:var(--font-script)]">
 						{hintMessage}
 					</p>
 				{/if}
@@ -211,14 +212,14 @@
 
 		<!-- Instructions -->
 		<div class="space-y-4">
-			<div class="flex items-center justify-center gap-4 text-[#FFFDD0]/40 text-sm">
+			<div class="flex items-center justify-center gap-4 text-[#D2CFA0]/40 text-sm">
 				<div class="flex items-center gap-2">
 					<kbd class="px-2 py-1 bg-[#1a1a1a] rounded border border-gray-700 text-xs">←</kbd>
 					<kbd class="px-2 py-1 bg-[#1a1a1a] rounded border border-gray-700 text-xs">→</kbd>
 				</div>
-				<span class="font-[var(--font-atkinson)]">navegar</span>
+				<span class="font-[family-name:var(--font-legible)]">navegar</span>
 			</div>
-			<p class="text-[#FFFDD0]/30 text-xs font-[var(--font-cinzel)]">
+			<p class="text-[#D2CFA0]/40 text-xs font-[family-name:var(--font-cinzel)]">
 				Los números están ocultos en las cartas diarias
 			</p>
 		</div>

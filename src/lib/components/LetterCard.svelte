@@ -43,7 +43,7 @@
 			if (digitRegex.test(sentence)) {
 				return sentence.replace(
 					digitRegex,
-					'<span class="inline-block px-1.5 py-0.5 bg-[#D4AF37]/20 text-[#D4AF37] font-bold rounded mx-0.5">$1</span>'
+					'<span class="inline-block px-1 py-0.25 text-velvet-red font-bold rounded mx-0.25 text-4xl">$1</span>'
 				);
 			}
 			return sentence;
@@ -71,7 +71,7 @@
 				{:else}
 					<div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F5F0E1] via-[#E8DCC8] to-[#D4C4A8]">
 						<span class="text-7xl mb-4 animate-float">💌</span>
-						<span class="text-[#8B7355] font-[var(--font-qwitcher)] text-lg">Carta #{day}</span>
+						<span class="text-[#8B7355] font-[family-name:var(--font-script)] text-lg">Carta #{day}</span>
 					</div>
 				{/if}
 
@@ -81,7 +81,7 @@
 
 			<!-- Day Label - Polaroid Style -->
 			<div class="absolute bottom-3 left-0 right-4 md:bottom-4 md:right-6 text-right">
-				<span class="font-[var(--font-qwitcher)] text-[#5C4A3A] text-lg md:text-xl">
+				<span class="font-[family-name:var(--font-script)] text-velvet-red text-2xl md:text-xl">
 					Día {day}
 				</span>
 			</div>
@@ -95,10 +95,10 @@
 	<div class="mt-10 space-y-8">
 		<!-- Date & Title -->
 		<header class="text-center space-y-3">
-			<time class="inline-block text-[#D4AF37] text-sm font-[var(--font-cinzel)] tracking-[0.2em] uppercase">
+			<time class="inline-block text-[#D4AF37] text-sm font-[family-name:var(--font-cinzel)] tracking-[0.2em] uppercase">
 				{date}
 			</time>
-			<h2 class="text-3xl md:text-4xl text-[#F5F0E1] font-[var(--font-felipa)] leading-tight">
+			<h2 class="text-3xl md:text-4xl text-[#F5F0E1] font-[family-name:var(--font-felipa)] leading-tight">
 				{title}
 			</h2>
 			<div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto"></div>
@@ -110,7 +110,7 @@
 			<div class="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-[#D4AF37]/30 rounded-tl-xl"></div>
 			<div class="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-[#D4AF37]/30 rounded-br-xl"></div>
 
-			<p class="text-[#2A2018] font-[var(--font-cormorant)] text-lg md:text-xl leading-relaxed md:leading-loose italic">
+			<p class="text-velvet-red font-[family-name:var(--font-script)] text-3xl leading-[0.85] italic">
 				{@html formattedText()}
 			</p>
 		</div>
@@ -119,7 +119,7 @@
 		<div class="text-center">
 			<button
 				onclick={toggleSecret}
-				class="group/btn inline-flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300
+				class="group/btn opacity-15 inline-flex items-center gap-3 px-4 py-2 mb-3 rounded-full transition-all duration-300
 					{showSecret
 						? 'bg-[#D4AF37] text-[#0a0a0a] shadow-lg shadow-[#D4AF37]/30'
 						: 'bg-[#2b0d0d] text-[#D4AF37] border border-[#D4AF37]/30 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10'}"
@@ -129,7 +129,7 @@
 				<span class="wax-seal w-8 h-8 flex items-center justify-center text-xs text-white transition-transform duration-300 group-hover/btn:scale-110">
 					{showSecret ? '✨' : '🔒'}
 				</span>
-				<span class="font-[var(--font-cinzel)] text-sm tracking-wide">
+				<span class="font-[family-name:var(--font-cinzel)] text-sm tracking-wide">
 					{showSecret ? 'Secreto Revelado' : 'Revelar Secreto'}
 				</span>
 			</button>
@@ -137,16 +137,15 @@
 			<!-- Secret Digit Reveal -->
 			{#if showSecret}
 				<div class="mt-6 animate-zoom-in">
-					<div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#D4AF37] to-[#B8962E] text-[#0a0a0a] text-4xl font-bold rounded-2xl shadow-xl shadow-[#D4AF37]/40 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+					<div class="inline-flex items-center justify-center w-20 h-20 bg-deep-bordeaux text-cream text-4xl font-[family-name:var(--font-cinzel)] font-bold rounded-2xl shadow-xl shadow-[#D4AF37]/40 transform rotate-3 hover:rotate-0 transition-transform duration-300 relative">
 						{secretDigit}
+						<span class="absolute -bottom-2 -right-1 w-10 h-10 text-lg">
+							🤫
+						</span>
 					</div>
 				</div>
 			{/if}
-
-			<!-- Hint Text -->
-			<p class="mt-4 text-[#D4AF37]/50 text-xs font-[var(--font-cinzel)] tracking-wide">
-				{showSecret ? 'Guarda este número para la cámara' : '¿Hay un número oculto aquí?'}
-			</p>
+			
 		</div>
 	</div>
 </article>

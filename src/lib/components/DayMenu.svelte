@@ -13,8 +13,7 @@
 		{ number: 2, label: 'Día 2', shortLabel: '2' },
 		{ number: 3, label: 'Día 3', shortLabel: '3' },
 		{ number: 4, label: 'Día 4', shortLabel: '4' },
-		{ number: 5, label: 'Día 5', shortLabel: '5' },
-		{ number: 6, label: 'Día 6', shortLabel: '6' }
+		{ number: 5, label: 'Día 5', shortLabel: '5' }
 	];
 </script>
 
@@ -42,16 +41,16 @@
 				>
 					<!-- Active Indicator -->
 					{#if isActive}
-						<div class="absolute -inset-1 bg-[#D4AF37] rounded-full opacity-20 animate-pulse-glow"></div>
+						<div class="absolute -inset-1 bg-[#AC8400] rounded-full opacity-20 animate-pulse-glow"></div>
 					{/if}
 
 					<!-- Button Content -->
 					<div
 						class="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full text-sm font-semibold transition-all duration-300
 							{isActive
-								? 'bg-gradient-to-br from-[#D4AF37] to-[#B8962E] text-[#0a0a0a] shadow-lg shadow-[#D4AF37]/30'
+								? 'bg-gradient-to-br from-[#AC8400] to-[#B8962E] text-[#0a0a0a] shadow-lg shadow-[#AC8400]/30'
 								: isUnlocked
-									? 'bg-[#2b0d0d] text-[#D4AF37] border border-[#D4AF37]/30 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10'
+									? 'bg-[#2b0d0d] text-[#AC8400] border border-[#AC8400]/30 hover:border-[#AC8400] hover:bg-[#AC8400]/10'
 									: 'bg-[#1a1a1a] text-gray-600 border border-gray-800 cursor-not-allowed'}"
 					>
 						{#if isUnlocked}
@@ -72,7 +71,7 @@
 
 					<!-- Tooltip -->
 					<div
-						class="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-[#0a0a0a] text-[#D4AF37] text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none border border-[#D4AF37]/20"
+						class="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-[#0a0a0a] text-[#AC8400] text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none border border-[#AC8400]/20"
 					>
 						{day.label}
 					</div>
@@ -81,29 +80,29 @@
 
 			<!-- Divider -->
 			{#if showVault}
-				<div class="w-px h-8 bg-gradient-to-b from-transparent via-[#D4AF37]/30 to-transparent mx-1"></div>
+				<div class="w-px h-8 bg-gradient-to-b from-transparent via-[#AC8400]/30 to-transparent mx-1"></div>
 
-				<!-- Vault Button (Day 7) -->
-				{@const isVaultUnlocked = unlockedDays.includes(7)}
+				<!-- Vault Button (Day 6 - Birthday) -->
+				{@const isVaultUnlocked = unlockedDays.includes(6)}
 				<button
-					onclick={() => onSelect(7)}
+					onclick={() => onSelect(6)}
 					disabled={!isVaultUnlocked}
 					class="relative group transition-all duration-400 {isVaultUnlocked ? 'hover:scale-105' : ''}"
 					aria-label="{isVaultUnlocked ? 'Abrir la cámara del tesoro' : 'Cámara del tesoro bloqueada'}"
 				>
 					<!-- Pulse Effect -->
-					{#if isVaultUnlocked && selectedDay !== 7}
+					{#if isVaultUnlocked && selectedDay !== 6}
 						<div class="absolute -inset-2 bg-[#CC0000] rounded-full opacity-20 animate-pulse"></div>
 					{/if}
 
 					<!-- Active Indicator -->
-					{#if selectedDay === 7}
+					{#if selectedDay === 6}
 						<div class="absolute -inset-1 bg-[#CC0000] rounded-full opacity-30 animate-pulse-glow"></div>
 					{/if}
 
 					<div
 						class="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full text-lg transition-all duration-300
-							{selectedDay === 7
+							{selectedDay === 6
 								? 'bg-gradient-to-br from-[#CC0000] to-[#8B0000] text-white shadow-lg shadow-[#CC0000]/30'
 								: isVaultUnlocked
 									? 'bg-[#2b0d0d] text-[#CC0000] border border-[#CC0000]/30 hover:border-[#CC0000] hover:bg-[#CC0000]/10'
