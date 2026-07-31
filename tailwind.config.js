@@ -5,17 +5,24 @@ export default {
 		extend: {
 			fontFamily: {
 				felipa: ['Felipa', 'cursive'],
-				qwitcher: ['Qwitcher Grypen', 'cursive'],
+				script: ['Qwitcher Grypen', 'cursive'],
 				uncial: ['Uncial Antiqua', 'cursive'],
 				cinzel: ['Cinzel', 'serif'],
+				pixel: ['Geist Pixel', 'Bitcount Single', 'monospace'],
+				legible: ['Atkinson Hyperlegible', 'sans-serif'],
 				slackey: ['Slackey', 'cursive'],
-				atkinson: ['Atkinson Hyperlegible', 'sans-serif'],
+				bartle: ['"BBH Bartle"', 'serif'],
+				bogle: ['"BBH Bogle"', 'serif'],
+				'grid-single': ['"Bitcount Grid Single"', 'monospace'],
+				'geist-mono': ['"Geist Mono"', 'monospace'],
+				girassol: ['Girassol', 'cursive'],
+				manrope: ['Manrope', 'sans-serif']
 			},
 			colors: {
 				'soft-black': '#0a0a0a',
 				'deep-bordeaux': '#2b0d0d',
-				'accent-gold': '#D4AF37',
-				cream: '#FFFDD0',
+				'accent-gold': '#AC8400',
+				cream: '#D2CFA0',
 				'crimson-red': '#CC0000',
 				'dark-sepia': '#1A1410',
 				'warm-beige': '#F5F0E1',

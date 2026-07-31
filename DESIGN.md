@@ -8,9 +8,9 @@
 |-------|-----|-------|
 | **Soft Black** | `#0a0a0a` | Primary background |
 | **Deep Bordeaux** | `#2b0d0d` | Secondary background |
-| **Accent Gold** | `#D4AF37` | Buttons, borders, highlights |
+| **Accent Gold** | `#AC8400` | Buttons, borders, highlights |
 | **White** | `#FFFFFF` | Clean contrast |
-| **Cream** | `#FFFDD0` | Light text on dark |
+| **Cream** | `#D2CFA0` | Light text on dark |
 | **Crimson Red** | `#CC0000` | Errors, badges |
 | **Dark Sepia** | `#1A1410` | Dark text on light |
 
@@ -34,7 +34,7 @@
 
 #### Odyssey Book (Section 3)
 - **Background**: Dark Velvet Red `#4A0404`
-- **Text**: Gold `#D4AF37`, Cream `#FFFDD0`
+- **Text**: Gold `#AC8400`, Cream `#D2CFA0`
 - **Accents**: Parchment-style corners
 
 ---
@@ -498,7 +498,7 @@
 
 | Combination | Ratio | WCAG Level |
 |-------------|-------|------------|
-| Gold (#D4AF37) on Black (#0a0a0a) | 7.2:1 | AAA |
+| Gold (#AC8400) on Black (#0a0a0a) | 7.2:1 | AAA |
 | White (#FFFFFF) on Bordeaux (#722F37) | 4.8:1 | AA |
 | Sepia (#1A1410) on Beige (#F5F0E1) | 8.1:1 | AAA |
 | Red (#8B0000) on White (#FFFFFF) | 5.9:1 | AA |
@@ -507,7 +507,7 @@
 
 ```css
 :focus-visible {
-  outline: 2px solid #D4AF37;
+  outline: 2px solid #AC8400;
   outline-offset: 2px;
 }
 ```
@@ -551,7 +551,53 @@ $effect(() => {
 
 ---
 
-## 10. Print Styles
+## 10. Mobile-First Design Rules
+
+### Touch Interactions (Primary)
+- **No hover states on touch devices** - Use `@media (hover: hover)` to only show hover effects on devices that support it
+- **Tap to interact** - All interactive elements must work with single tap
+- **Minimum touch target**: 44px x 44px for all interactive elements
+- **Swipe gestures** - Horizontal swipe for carousels, vertical for scrolling
+- **Long press** - Reserved for secondary actions (edit, delete)
+
+### Device Motion Parallax
+- **Primary input**: DeviceOrientation (gyroscope) for tilt-based parallax
+- **Fallback chain**: Gyroscope → Accelerometer → Mouse → Scroll → Static
+- **iOS permission**: Must request via user gesture (button tap)
+- **Calibration**: Capture base orientation on first event for relative positioning
+- **GPU acceleration**: Use `transform: translate3d()` for smooth performance
+
+### Parallax Environment Presets
+
+| Environment | Background | Mid Elements | Foreground | Speed |
+|-------------|-----------|--------------|------------|-------|
+| Field | Sky gradient, distant hills | Flowers, tall grass | Butterfly, dandelion | 0.8 |
+| Mountains | Blue-purple sky, peaks | Pine trees, clouds | Eagle, snowflakes | 1.0 |
+| Forest | Dark canopy, misty light | Trees, ferns | Fireflies, leaves | 0.6 |
+| Palace | Interior columns, arches | Candelabras, curtains | Floating petals | 0.9 |
+| Beach | Ocean horizon, sunset | Waves, palm trees | Seagulls, shells | 0.7 |
+| Sky | Clouds, stars | Sun/moon, birds | Floating lanterns | 1.2 |
+
+### Reduced Motion Support
+```css
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer {
+    transform: none !important;
+    animation: none !important;
+  }
+}
+```
+
+### Mobile Layout Patterns
+- **Cards**: Single column, full-width
+- **Navigation**: Bottom tab bar or hamburger menu
+- **Content**: Scroll vertically, minimal horizontal movement
+- **Images**: Responsive with `object-fit: cover`
+- **Text**: Minimum 16px for body, 12px for captions
+
+---
+
+## 11. Print Styles
 
 ```css
 @media print {

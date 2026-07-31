@@ -351,7 +351,7 @@ function isDateInRange(date, start, end) {
 
 ### Color Contrast
 - WCAG AA compliance (4.5:1 for normal text)
-- Test gold (#D4AF37) on dark backgrounds
+- Test gold (#AC8400) on dark backgrounds
 - Provide fallback colors for low contrast
 
 ### Keyboard Navigation
@@ -396,7 +396,75 @@ No server-side environment variables required. All configuration is client-side 
 
 ---
 
-## 12. Testing
+## 12. Parallax System
+
+### Architecture
+```
+src/lib/
+├── config/
+│   └── parallax.js              # Centralized presets
+├── components/
+│   ├── ParallaxScene.svelte     # Container with input detection
+│   ├── ParallaxLayer.svelte     # Depth layer component
+│   └── EnvironmentCard.svelte   # Card with environment background
+├── composables/
+│   └── useDeviceMotion.svelte.js # Device sensor hook
+└── assets/
+    └── environments/            # SVG/gradient placeholders
+```
+
+### Input Source Hierarchy
+1. **DeviceOrientation** (gyroscope) - Mobile primary
+2. **DeviceMotion** (accelerometer) - Fallback
+3. **Mouse position** - Desktop fallback
+4. **Scroll position** - Additional depth
+5. **Static** - No parallax, still looks good
+
+### Device Motion API
+```javascript
+// iOS requires permission request
+async function requestMotionPermission() {
+  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    const permission = await DeviceOrientationEvent.requestPermission();
+    return permission === 'granted';
+  }
+  return true; // Non-iOS: no permission needed
+}
+
+// Capture base orientation for relative positioning
+let baseOrientation = null;
+window.addEventListener('deviceorientation', (e) => {
+  if (!baseOrientation) {
+    baseOrientation = { beta: e.beta, gamma: e.gamma };
+  }
+  const relBeta = e.beta - baseOrientation.beta;
+  const relGamma = (e.gamma - baseOrientation.gamma) * -1;
+});
+```
+
+### Parallax Layer Component
+```svelte
+<script>
+  let { speed = 0.5, tiltX = 0, tiltY = 0, children } = $props();
+  
+  let layerY = $derived(tiltY * speed);
+  let layerX = $derived(tiltX * speed);
+</script>
+
+<div style="transform: translate3d({layerX}px, {layerY}px, 0)">
+  {@render children?.()}
+</div>
+```
+
+### Performance Requirements
+- Use `transform` and `opacity` only (no layout thrashing)
+- `will-change: transform` for animated layers
+- `requestAnimationFrame` for smooth updates
+- Cleanup event listeners in `onDestroy`
+
+---
+
+## 13. Testing
 
 ### Manual Testing Checklist
 - [ ] Date-based content unlock works correctly
