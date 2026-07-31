@@ -10,6 +10,20 @@
 
 	const PRINTER_BASE_TOP = 100;
 
+	function formatDate(dateStr) {
+		const d = new Date(dateStr);
+		const day = String(d.getDate()).padStart(2, '0');
+		const month = String(d.getMonth() + 1).padStart(2, '0');
+		const year = String(d.getFullYear()).slice(-2);
+		return `${day}-${month}-${year}`;
+	}
+
+	function truncatePrice(price) {
+		if (!price) return '';
+		const words = price.split(' ');
+		return words.slice(0, 2).join(' ');
+	}
+
 	let reversedItems = $derived([...items].reverse());
 	let containerHeight = $derived(viewportHeight - PRINTER_BASE_TOP);
 	let maxScroll = $derived(receiptHeight);
@@ -74,7 +88,7 @@
 
 	<!-- RECEIPT CONTAINER (positioned at printer base, overflow hidden at top) -->
 	<div 
-		class="absolute left-1/2 -translate-x-1/2 w-56 md:w-64 overflow-hidden z-20"
+		class="absolute left-1/2 -translate-x-1/2 w-80 max-w-[95dvw] overflow-hidden z-20"
 		style="top: {PRINTER_BASE_TOP}px; height: {containerHeight}px;"
 	>
 		<!-- RECEIPT PAPER (scrolls inside container, starts above) -->
@@ -83,68 +97,64 @@
 			class="absolute left-0 w-full"
 			style="top: {receiptTop}px;"
 		>
-			<div class="relative bg-[#fdfdfd] shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
-				<!-- Paper texture -->
-				<div class="absolute inset-0 opacity-[0.02] pointer-events-none"
-					style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');">
-				</div>
+			<div class="relative bg-[#fff] shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
+				<!-- Perforated edge -->
+				<div class="h-4 w-full" style="background-image: radial-gradient(circle, #fff 3px, transparent 3.5px); background-size: 16px 16px; background-position: center;"></div>
 
 				<!-- Header -->
-				<div class="px-4 pt-5 pb-4 text-center border-b border-dashed border-gray-200">
-					<div class="w-10 h-10 mx-auto mb-2 bg-gradient-to-br from-[#991111] to-[#cc0000] rounded-full flex items-center justify-center shadow-md">
-						<span class="text-base">❤️</span>
-					</div>
-					<h2 class="text-sm font-[var(--font-slackey)] text-[#1a1a1a] tracking-wide">RECIBO DE AMOR</h2>
-					<p class="text-[8px] text-gray-400 font-mono tracking-widest mt-0.5">AMOR & CÍA. · EST. 2021</p>
-					<div class="mt-3 flex items-center justify-center gap-1">
-						<div class="w-5 h-px bg-gray-200"></div>
-						<span class="text-[7px] text-gray-300">✦</span>
-						<div class="w-5 h-px bg-gray-200"></div>
+				<div class="px-4 pt-4 pb-4 text-center border-b-2 border-dashed border-[#1A1410]/40">
+					<p class="text-[14px] text-[#1A1410] font-pixel leading-loose">ROCKY AS A HUSBAND CO.</p>
+					<p class="text-[10px] text-[#1A1410] font-pixel leading-tight">13600   ALCÁZAR DE SAN JUAN</p>
+					<p class="text-[10px] text-[#1A1410] font-pixel leading-tight">TELÉFONO:      685 5O 80 13</p>
+					<p class="text-[10px] text-[#1A1410] font-pixel leading-tight">01/07/2026  17:12  OP:06082003</p>
+					<p class="text-[10px] text-[#1A1410] font-pixel leading-tight">FACTURA POR SERVICIOS AMOROSOS</p>
+					<p class="text-[10px] text-[#1A1410] font-pixel leading-tight">NÚMERO DE CLIENTE: M1L4GR05</p>
+
+					<!-- Barcode -->
+					<div class="mt-3 h-10 w-full flex items-end justify-center gap-[1px]">
+						{#each Array(10) as _, i}
+							<div class="bg-[#3A3430]" style="width: {i % 3 === 0 ? '2px' : '1px'}; height: 100%;"></div>
+							<div class="bg-[#3A3430]" style="width: {i % 5 === 0 ? '5px' : '2px'}; height: 100%;"></div>
+							<div class="bg-[#3A3430]" style="width: {i % 2 === 0 ? '2px' : '3px'}; height: 100%;"></div>
+						{/each}
+						{#each Array(10) as _, i}
+					<div class="bg-[#3A3430]" style="width: {i % 2 === 0 ? '2px' : '3px'}; height: 100%;"></div>
+							<div class="bg-[#3A3430]" style="width: {i % 5 === 0 ? '5px' : '2px'}; height: 100%;"></div>
+							<div class="bg-[#3A3430]" style="width: {i % 3 === 0 ? '2px' : '1px'}; height: 100%;"></div>
+						{/each}
 					</div>
 				</div>
 
 				<!-- Items (reversed) -->
 				<div class="px-4 py-3">
 					{#each reversedItems as item, index}
-						<div class="py-3 border-b border-gray-100 last:border-0">
-							<p class="text-[7px] text-gray-400 font-mono uppercase tracking-widest mb-1">{item.date}</p>
-							<div class="flex justify-between items-baseline gap-2 mb-1">
-								<span class="text-[11px] font-bold text-[#1a1a1a] font-[var(--font-slackey)]">{item.service}</span>
-								<span class="text-[10px] font-bold text-[#8B0000] font-mono whitespace-nowrap">{item.price}</span>
+						<div class="py-5 border-b border-[#1A1410]/20 last:border-0">
+							<div class="flex justify-between items-baseline mb-1">
+								<p class="text-xs text-[#1A1410]/50 font-pixel">{formatDate(item.date)}</p>
+								<p class="text-xs text-[#1A1410]/50 font-pixel">#{String(index + 1).padStart(4, '0')}</p>
 							</div>
-							<p class="text-[10px] text-gray-500 font-[var(--font-cormorant)] italic leading-relaxed">{item.description}</p>
-							<p class="mt-1.5 text-[7px] text-gray-400 font-mono">CLI: #{item.clientNumber}</p>
+							<div class="flex justify-between items-baseline gap-2 mb-1">
+								<span class="text-sm font-bold text-[#1A1410] font-pixel">{item.service}</span>
+								<span class="text-sm font-bold text-[#1A1410] font-pixel whitespace-nowrap">$ {truncatePrice(item.price)}</span>
+							</div>
+							<p class="text-xs text-[#1A1410]/70 font-grid-single leading-relaxed">{item.description}</p>
 						</div>
 					{/each}
 				</div>
 
 				<!-- Footer -->
-				<div class="px-4 py-4 border-t border-dashed border-gray-200">
-					<div class="flex items-center justify-center gap-1 mb-3">
-						<div class="w-5 h-px bg-gray-200"></div>
-						<span class="text-[7px] text-gray-300">✦</span>
-						<div class="w-5 h-px bg-gray-200"></div>
-					</div>
+				<div class="px-4 py-4 border-t-2 border-dashed border-[#1A1410]/40">
 					<div class="text-center">
-						<p class="text-[7px] text-gray-400 font-mono tracking-widest">TOTAL</p>
-						<p class="text-base font-bold text-[#8B0000] font-[var(--font-slackey)] mt-0.5">AMOR INFINITO</p>
+						<p class="text-sm text-[#1A1410] font-pixel tracking-widest">TOTAL</p>
+						<p class="text-base font-bold text-[#1A1410] font-pixel mt-0.5">Todo lo que soy</p>
 					</div>
-					<p class="text-center text-[8px] text-gray-400 font-mono mt-3">¡Gracias por tu fidelidad!</p>
-					<p class="text-center text-lg mt-2">❤️</p>
-					<div class="mt-3 pt-3 border-t border-gray-100">
-						<div class="flex justify-center gap-px">
-							{#each Array(20) as _}
-								<div class="bg-gray-800" style="width: 1px; height: {8 + Math.random() * 5}px;"></div>
-							{/each}
-						</div>
-						<p class="text-center text-[6px] text-gray-300 font-mono mt-1 tracking-widest">20210815♥20240807</p>
-					</div>
+					<p class="text-center text-xs text-[#1A1410]/70 font-grid-single italic mt-3">¡Gracias por tu compra!</p>
 				</div>
 
 				<!-- Torn edge -->
 				<div class="h-4 bg-[#1a1a1a]">
 					<svg class="w-full h-4" viewBox="0 0 200 16" preserveAspectRatio="none">
-						<path d="M0,0 L5,16 L10,0 L15,16 L20,0 L25,16 L30,0 L35,16 L40,0 L45,16 L50,0 L55,16 L60,0 L65,16 L70,0 L75,16 L80,0 L85,16 L90,0 L95,16 L100,0 L105,16 L110,0 L115,16 L120,0 L125,16 L130,0 L135,16 L140,0 L145,16 L150,0 L155,16 L160,0 L165,16 L170,0 L175,16 L180,0 L185,16 L190,0 L195,16 L200,0" fill="#fdfdfd"/>
+						<path d="M0,0 L5,16 L10,0 L15,16 L20,0 L25,16 L30,0 L35,16 L40,0 L45,16 L50,0 L55,16 L60,0 L65,16 L70,0 L75,16 L80,0 L85,16 L90,0 L95,16 L100,0 L105,16 L110,0 L115,16 L120,0 L125,16 L130,0 L135,16 L140,0 L145,16 L150,0 L155,16 L160,0 L165,16 L170,0 L175,16 L180,0 L185,16 L190,0 L195,16 L200,0" fill="#fff"/>
 					</svg>
 				</div>
 			</div>
@@ -154,8 +164,8 @@
 	<!-- PRINTER BODY (z-30: receipt passes BEHIND this) -->
 	<div class="absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
 		<div class="relative">
-			<div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-72 h-6 bg-black/40 rounded-full blur-xl"></div>
-			<div class="relative w-72 md:w-80">
+			<div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-96 max-w-[97dvw] h-6 bg-black/40 rounded-full blur-xl"></div>
+			<div class="relative w-96 max-w-[97dvw]">
 				<!-- Top -->
 				<div class="relative h-5 bg-gradient-to-b from-[#4a4a4a] to-[#3a3a3a] rounded-t-xl border-t-2 border-x-2 border-[#555]">
 					<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-36 md:w-44">
@@ -191,7 +201,7 @@
 
 	<!-- PRINTER BASE (z-10: receipt passes OVER this) -->
 	<div class="absolute left-1/2 -translate-x-1/2 z-10 pointer-events-none" style="top: {PRINTER_BASE_TOP - 4}px;">
-		<div class="relative w-72 md:w-80">
+		<div class="relative w-96 max-w-[97dvw]">
 			<!-- Slot opening -->
 			<div class="w-full h-[3px] bg-[#0a0a0a] shadow-[inset_0_2px_4px_rgba(0,0,0,0.9)]"></div>
 			<!-- Base plate -->
@@ -206,10 +216,10 @@
 	{#if scrollProgress < 100}
 		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30">
 			<div class="flex flex-col items-center gap-2 animate-bounce">
-				<div class="w-5 h-8 border-2 border-[#D4AF37]/40 rounded-full flex justify-center pt-1.5">
-					<div class="w-1 h-1.5 bg-[#D4AF37]/60 rounded-full animate-pulse"></div>
+				<div class="w-5 h-8 border-2 border-[#AC8400]/40 rounded-full flex justify-center pt-1.5">
+					<div class="w-1 h-1.5 bg-[#AC8400]/60 rounded-full animate-pulse"></div>
 				</div>
-				<span class="text-[#D4AF37]/50 text-[10px] font-[var(--font-cinzel)] tracking-wider">Desplaza para imprimir</span>
+				<span class="text-[#AC8400]/50 text-[10px] font-cinzel tracking-wider">Desplaza para imprimir</span>
 			</div>
 		</div>
 	{/if}

@@ -1,44 +1,38 @@
 [
 	{
-		"date": "1 de Agosto, 2024",
+		"date": "2024-08-01",
 		"service": "Beso de Buenos Días",
-		"price": "∞ de amor",
-		"description": "Un beso suave para comenzar el día, entregado con calidez y cariño.",
-		"clientNumber": "0815"
+		"price": "Infinito amor",
+		"description": "Un beso suave para comenzar el día, entregado con calidez y cariño."
 	},
 	{
-		"date": "2 de Agosto, 2024",
+		"date": "2024-08-02",
 		"service": "Cine Virtual Nocturno",
-		"price": "2 boletos al paraíso",
-		"description": "Una velada acogedora viendo nuestras películas favoritas juntos, kilómetros pero corazones unidos.",
-		"clientNumber": "0815"
+		"price": "Invalorable",
+		"description": "Una velada acogedora viendo nuestras películas favoritas juntos, kilómetros pero corazones unidos."
 	},
 	{
-		"date": "3 de Agosto, 2024",
+		"date": "2024-08-03",
 		"service": "Charla Nocturna",
-		"price": "3 horas de consuelo",
-		"description": "Cuando el mundo duerme, compartimos nuestros sueños, miedos y todo lo que hay en el medio.",
-		"clientNumber": "0815"
+		"price": "Sin precio",
+		"description": "Cuando el mundo duerme, compartimos nuestros sueños, miedos y todo lo que hay en el medio."
 	},
 	{
-		"date": "4 de Agosto, 2024",
+		"date": "2024-08-04",
 		"service": "Entrega Sorpresa",
-		"price": "1 corazón lleno de alegría",
-		"description": "Un paquete inesperado lleno de amor, risas y pequeños recuerdos de nosotros.",
-		"clientNumber": "0815"
+		"price": "Eterno amor",
+		"description": "Un paquete inesperado lleno de amor, risas y pequeños recuerdos de nosotros."
 	},
 	{
-		"date": "5 de Agosto, 2024",
+		"date": "2024-08-05",
 		"service": "Cena Virtual Romántica",
-		"price": "experiencia de 5 estrellas",
-		"description": "Una cena a la luz de las velas a través de pantallas, compartiendo historias y miradas furtivas.",
-		"clientNumber": "0815"
+		"price": "Impagable",
+		"description": "Una cena a la luz de las velas a través de pantallas, compartiendo historias y miradas furtivas."
 	},
 	{
-		"date": "6 de Agosto, 2024",
+		"date": "2024-08-06",
 		"service": "Promesa de Eternidad",
-		"price": "∞ de compromiso",
-		"description": "Una promesa de siempre estar ahí, a través de cada tormenta y cada amanecer.",
-		"clientNumber": "0815"
+		"price": "Infinito valor",
+		"description": "Una promesa de siempre estar ahí, a través de cada tormenta y cada amanecer."
 	}
 ]
