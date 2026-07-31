@@ -6,3 +6,4 @@ export { default as MainMenu } from './components/MainMenu.svelte';
 export { default as ReceiptSection } from './components/ReceiptSection.svelte';
 export { default as RobloxSection } from './components/RobloxSection.svelte';
 export { default as OdysseyBook } from './components/OdysseyBook.svelte';
+export { default as ReviewSection } from './components/ReviewSection.svelte';

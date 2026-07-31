@@ -1,0 +1,46 @@
+{
+	"rating": {
+		"categories": [
+			{ "id": "affection", "label": "Afectividad", "icon": "💕", "default": 5 },
+			{ "id": "romanticism", "label": "Romanticismo", "icon": "🌹", "default": 5 },
+			{ "id": "sexual", "label": "Diversión Sexual", "icon": "🔥", "default": 5 },
+			{ "id": "jokes", "label": "Calidad de Bromas", "icon": "😂", "default": 5 },
+			{ "id": "emotional", "label": "Apoyo Emocional", "icon": "🫂", "default": 5 }
+		],
+		"improveLabel": "Cosas que puedo mejorar",
+		"improvePlaceholder": "Cuéntame qué te gustaría que hiciera diferente..."
+	},
+	"spicy": {
+		"categories": [
+			{ "id": "pose", "label": "Pose deseada", "icon": "💃", "placeholder": "Alguna pose que te encante..." },
+			{ "id": "outfit", "label": "Outfit favorito", "icon": "👗", "placeholder": "Qué ropa te gustaría verme..." },
+			{ "id": "roleplay", "label": "Roleplay deseado", "icon": "🎭", "placeholder": "Algún escenario que te excite..." },
+			{ "id": "tips", "label": "Tips que te encantan", "icon": "✨", "placeholder": "Cosas que ya hago y te encantan..." },
+			{ "id": "details", "label": "Detalles que amo", "icon": "💝", "placeholder": "Detalles pequeños que te hacen sentir especial..." }
+		]
+	},
+	"coupons": [
+		{ "id": 1, "title": "Cena Virtual", "description": "Una cena especial juntos por videollamada", "icon": "🍽️", "color": "#AC8400" },
+		{ "id": 2, "title": "Masaje Relax", "description": "Sesión de masaje relajante la próxima vez que nos veamos", "icon": "💆", "color": "#CC0000" },
+		{ "id": 3, "title": "Aventura Nocturna", "description": "Una noche de aventura virtual sin límites", "icon": "🌙", "color": "#722F37" },
+		{ "id": 4, "title": "Día de Descanso", "description": "Tú decides qué hacemos, sin preguntas", "icon": "👑", "color": "#4A0404" }
+	],
+	"whatsappNumber": "34685508013",
+	"ui": {
+		"title": "Tu Reseña",
+		"subtitle": "Califica nuestro amor",
+		"step1Title": "⭐ Calificación",
+		"step2Title": "🔥 Peticiones Picantes",
+		"step3Title": "🎁 Cupones",
+		"sendButton": "Enviar por WhatsApp",
+		"savedIndicator": "Guardado ✓",
+		"editButton": "Editar",
+		"downloadCoupon": "Descargar Cupón",
+		"back": "Volver",
+		"next": "Siguiente",
+		"previous": "Anterior",
+		"send": "Enviar",
+		"sent": "¡Enviado!",
+		"editMode": "Puedes editar y enviar de nuevo"
+	}
+}
