@@ -2,16 +2,33 @@
  * Date utility functions for the 7 Days of August project
  */
 
+const ARGENTINA_TZ = 'America/Argentina/Buenos_Aires';
+
 /**
- * Get the current day in August (1-7)
+ * Get the current date in Argentina timezone
+ * @returns {{ year: number, month: number, day: number }}
+ */
+function getArgentinaDate() {
+	const now = new Date();
+	const parts = new Intl.DateTimeFormat('en-US', {
+		timeZone: ARGENTINA_TZ,
+		year: 'numeric',
+		month: 'numeric',
+		day: 'numeric'
+	}).formatToParts(now);
+
+	const get = (type) => parseInt(parts.find((p) => p.type === type).value);
+	return { year: get('year'), month: get('month'), day: get('day') };
+}
+
+/**
+ * Get the current day in August (1-7) using Argentina timezone
  * @returns {number} Current day (1-7) or 0 if not in August
  */
 export function getCurrentAugustDay() {
-	const now = new Date();
-	const month = now.getMonth(); // 0 = January, 7 = August
-	const day = now.getDate();
+	const { month, day } = getArgentinaDate();
 
-	if (month === 7 && day >= 1 && day <= 7) {
+	if (month === 8 && day >= 1 && day <= 7) {
 		return day;
 	}
 	return 0;
