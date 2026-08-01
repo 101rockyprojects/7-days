@@ -1,0 +1,16 @@
+{
+	"name": "7 Días de Agosto",
+	"short_name": "7Días",
+	"description": "Un regalo interactivo romántico — 7 días de cartas, música y recuerdos",
+	"start_url": "/7-days/",
+	"display": "standalone",
+	"background_color": "#0a0a0a",
+	"theme_color": "#0a0a0a",
+	"icons": [
+		{
+			"src": "/7-days/favicon.svg",
+			"sizes": "any",
+			"type": "image/svg+xml"
+		}
+	]
+}
