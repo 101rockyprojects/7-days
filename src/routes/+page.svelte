@@ -114,7 +114,7 @@
 
 <div class="min-h-screen bg-[#0a0a0a] text-white relative">
 	<!-- Parallax Background -->
-	<LetterBackground backImage={bgImages.back} middleImage={bgImages.middle} frontImage={bgImages.front} />
+	<LetterBackground backImage={bgImages.back} middleImage={bgImages.middle} frontImage={bgImages.front} day={selectedDay} />
 
 	<!-- Transition Overlay -->
 	{#if isTransitioning}
@@ -158,6 +158,8 @@
 						text={currentLetter.text}
 						imageUrl={currentLetter.imageUrl}
 						secretDigit={currentLetter.secretDigit}
+						songUrl={currentLetter.songUrl}
+						darkBg={currentLetter.darkBg}
 					/>
 				</div>
 			{:else}
