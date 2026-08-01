@@ -8,13 +8,20 @@
 	let { unlockedDays = [], selectedDay = 1, onSelect, showVault = false } = $props();
 
 	// Days configuration
-	const days = [
+	const allDays = [
 		{ number: 1, label: 'Día 1', shortLabel: '1' },
 		{ number: 2, label: 'Día 2', shortLabel: '2' },
 		{ number: 3, label: 'Día 3', shortLabel: '3' },
 		{ number: 4, label: 'Día 4', shortLabel: '4' },
 		{ number: 5, label: 'Día 5', shortLabel: '5' }
 	];
+
+	// Show all unlocked days plus the next locked one
+	let days = $derived(() => {
+		const currentDay = Math.max(...unlockedDays, 0);
+		const nextDay = currentDay + 1;
+		return allDays.filter(d => d.number <= nextDay);
+	});
 </script>
 
 <nav
@@ -23,7 +30,7 @@
 >
 	<div class="max-w-4xl mx-auto px-4 py-3">
 		<div class="flex items-center justify-center gap-2 md:gap-3">
-			{#each days as day, index}
+			{#each days() as day, index}
 				{@const isUnlocked = unlockedDays.includes(day.number)}
 				{@const isActive = selectedDay === day.number}
 				{@const isPast = unlockedDays.includes(day.number) && day.number < selectedDay}
