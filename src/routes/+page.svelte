@@ -110,6 +110,21 @@
 <svelte:head>
 	<title>7 Días de Agosto - {indexData.partnerName}</title>
 	<meta name="description" content="Un regalo interactivo romántico para {indexData.partnerName}" />
+
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="7 Días de Agosto" />
+	<meta property="og:description" content="Un regalo interactivo romántico para {indexData.partnerName}" />
+	<meta property="og:image" content="https://101rockyprojects.github.io/7-days/images/letter-1.jpeg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:url" content="https://101rockyprojects.github.io/7-days/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="7 Días de Agosto" />
+	<meta name="twitter:description" content="Un regalo interactivo romántico para {indexData.partnerName}" />
+	<meta name="twitter:image" content="https://101rockyprojects.github.io/7-days/images/letter-1.jpeg" />
 </svelte:head>
 
 <div class="min-h-screen bg-[#0a0a0a] text-white relative">
