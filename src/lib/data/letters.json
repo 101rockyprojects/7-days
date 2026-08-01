@@ -3,14 +3,16 @@
 		"day": 1,
 		"date": "1 de Agosto",
 		"title": "El Comienzo",
-		"text": "Mi amor más querido, mientras escribo esta primera carta, recuerdo cómo todo comenzó. Las 4 estaciones que hemos compartido han sido el viaje más hermoso de mi vida. Cada momento contigo es un regalo que nunca supe que necesitaba.",
-		"imageUrl": "/images/letter-1.jpg",
+		"text": "Feliz día, reina mía.<br><br>Oh, Diosa de Ítaca, Oh, mi dulce Penélope.<br><br>No todos los días te despierto con mis escritos inspirados en ti, pero todos los días junto a mi amada son un Milagro. Hoy es una excusa para demostrarte el desborde de cariño a través de lo mejor que puedo ofrecerte: Palabras de afecto, momentos de calidad y la locura que me caracteriza.<br><br>Si fuesen por los divinos cielos te tendría reposada entre mis brazos, te sostendría con fuerza, mantendría tu cabeza en mis hombros, no dejaría que este momento se corrompiese por el pasar del tiempo.<br><br>Milagros, amada mía,<br><br>Si algún vez pierdo el rumbo entre mis pensamientos, quiero que sepas que tus ojos son la estrella polar que me guía en la vastedad de la incertidumbre, ayudas a este pirata que vaga por sus dudas, buscando el tesoro que aguardan tus labios, escribiendo lo que hará cuando sea rico, ignorando que ya lo es. El cielo despejado como tus intenciones, tus ojos son el sol que me encandila calentando mi piel y la luna que no me deja en la penumbra, floto sobre el plan de nuestra vida, sobre las palabras y promesas que he hecho, sobre cada mensaje que ha podido enternecer tu corazón; me refugio en tu voz cuando me siento perdido, tu canto me lleva como el viento a un barco que busca sentido, y lo encuentra contigo.<br><br>Curioso resulta que desde pequeño escribía tantos versos, tantos poemas de amor y no sabía a quién, creí ser un 0 a la izquierda, un novato, un perdedor, con la vocación pero sin musa, con el corazón en la mano y nadie que lo recibiera; tú llegaste a tomar ese corazón y devolverlo a mí, con la promesa de que podrías curarlo únicamente con mirarme a los ojos, ahora que te tengo he encontrado la fuente de más inspiración, aunque esta ya no se centre solo en mis notas, ahora se encuentra en mis proyectos, en mi plan de vida, en mi día a día, en mis noches y mis sueños.<br><br>Tengo el honor hoy de llamarte mi novia, de ser la que pueda recibir la persona que soy, con mis aciertos y mis fallas, me has entregado tu tiempo, tus pasiones, tus inseguridades, tus momentos íntimos, tus quejas, tus risas y tus llantos. Te veo como mi compañera de vida, mi lucero, mi pilar, mi refugio, no eres solo 'mi novia' eres la mujer por la que he nacido hombre. Le pertenezco a esos labios desde el primer día que les hice sonreír, y aunque pueda hacerte soltar una lágrima al leerme, sé que viene acompañada de esa sonrisa que me vuelve loco.<br><br>Te amo, Milagros. Feliz día para ti, por ser mi novia, y a mí, por tener el honor.",
+		"imageUrl": "/images/letter-1.jpeg",
 		"background": {
-			"back": "/images/lighthome.jpeg",
-			"middle": "/images/lighthome-middle.webp",
-			"front": "/images/lighthome-front.webp"
+			"back": "/images/swim.jpeg",
+			"middle": "/images/swim-middle.webp",
+			"front": "/images/swim-front.webp"
 		},
-		"secretDigit": 4
+		"secretDigit": 0,
+		"songUrl": "https://meloday.rockybarrios10.workers.dev/iUlvVcmizbA?specialDay",
+		"darkBg": true
 	},
 	{
 		"day": 2,
@@ -23,7 +25,9 @@
 			"middle": "/images/pink-olimpus-middle.webp",
 			"front": "/images/pink-olimpus-front.webp"
 		},
-		"secretDigit": 7
+		"secretDigit": 6,
+		"songUrl": "https://meloday.rockybarrios10.workers.dev/iUlvVcmizbA?specialDay",
+		"darkBg": false
 	},
 	{
 		"day": 3,
@@ -36,7 +40,9 @@
 			"middle": "/images/apothecary-middle.webp",
 			"front": "/images/apothecary-front.webp"
 		},
-		"secretDigit": 2
+		"secretDigit": 0,
+		"songUrl": "https://meloday.rockybarrios10.workers.dev/iUlvVcmizbA?specialDay",
+		"darkBg": false
 	},
 	{
 		"day": 4,
@@ -49,7 +55,9 @@
 			"middle": "/images/space-stranded-middle.webp",
 			"front": "/images/space-stranded-front.webp"
 		},
-		"secretDigit": 9
+		"secretDigit": 8,
+		"songUrl": "https://meloday.rockybarrios10.workers.dev/iUlvVcmizbA?specialDay",
+		"darkBg": true
 	},
 	{
 		"day": 5,
@@ -58,8 +66,12 @@
 		"text": "Los kilómetros nos separan, pero nuestros corazones siempre están conectados. En los 5 años que nos conocemos, he aprendido que el amor no conoce fronteras. Siempre estás a un pensamiento de distancia.",
 		"imageUrl": "/images/letter-5.jpg",
 		"background": {
-			"back": "/images/sky-paper.jpeg"
+			"back": "/images/lighthome.jpeg",
+			"middle": "/images/lighthome-middle.webp",
+			"front": "/images/lighthome-front.webp"
 		},
-		"secretDigit": 5
+		"secretDigit": 2,
+		"songUrl": "https://meloday.rockybarrios10.workers.dev/iUlvVcmizbA?specialDay",
+		"darkBg": true
 	}
 ]
