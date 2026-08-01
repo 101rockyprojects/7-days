@@ -11,21 +11,29 @@
 	let {
 		backImage = '',
 		middleImage = '',
-		frontImage = ''
+		frontImage = '',
+		day = 1
 	} = $props();
 
 	const motion = useDeviceMotion({ disableMouse: false });
 
 	let hasImages = $derived(backImage || middleImage || frontImage);
 
-	// Scroll-based depth offsets (back moves more, middle medium, front less)
-	let backY = $derived(motion.scrollY * 0.35);
-	let middleY = $derived(motion.scrollY * 0.18);
-	let frontY = $derived(motion.scrollY * 0.05);
+	// Reduce parallax when page is tall (cap movement based on scroll height)
+	let heightFactor = $derived(() => {
+		if (typeof document === 'undefined') return 1;
+		const h = document.documentElement.scrollHeight;
+		return Math.min(1, 800 / h);
+	});
 
-	// Gyroscope tilt offsets
-	let tiltX = $derived(motion.translateX * 0.3);
-	let tiltY = $derived(motion.translateY * 0.3);
+	// Scroll-based depth offsets scaled by height
+	let backY = $derived(motion.scrollY * 0.35 * heightFactor());
+	let middleY = $derived(motion.scrollY * 0.15 * heightFactor());
+	let frontY = $derived(motion.scrollY * 0.05 * heightFactor());
+
+	// Gyroscope tilt offsets scaled by height
+	let tiltX = $derived(motion.translateX * 0.3 * heightFactor());
+	let tiltY = $derived(motion.translateY * 0.5 * heightFactor());
 
 	let backTransform = $derived(
 		`translate3d(${tiltX * 0.2}px, ${backY + tiltY * 0.2}px, 0)`
@@ -56,8 +64,8 @@
 
 		{#if middleImage}
 			<div
-				class="letter-bg-layer middle-layer max-w-2xl mx-auto"
-				style="transform: {middleTransform}; will-change: transform;"
+				class="letter-bg-layer middle-layer max-w-3xl mx-auto"
+				style="transform: {middleTransform}; will-change: transform; {day === 1 ? '' : 'margin-top: 5%'}"
 			>
 				<img
 					src="{base}{middleImage}"
@@ -70,8 +78,8 @@
 
 		{#if frontImage}
 			<div
-				class="letter-bg-layer front-layer mx-auto"
-				style="transform: {frontTransform}; will-change: transform;"
+				class="letter-bg-layer front-layer max-w-3xl mx-auto"
+				style="transform: {frontTransform}; will-change: transform; {day === 1 ? 'margin-top: 10%' : ''}"
 			>
 				<img
 					src="{base}{frontImage}"
@@ -109,7 +117,6 @@
 
 	.back-layer {
 		filter: brightness(0.75);
-		scale: 0.85;
 		min-height: 100vh;
 	}
 
@@ -117,7 +124,6 @@
 		filter: drop-shadow(5px -18px 40px rgba(0, 0, 0, 0.4));
 		filter: brightness(0.9);
 		scale: 1;
-		margin-top: 5%;
 	}
 
 	.front-layer {
