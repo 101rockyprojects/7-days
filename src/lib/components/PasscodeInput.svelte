@@ -116,7 +116,7 @@
 					<span class="text-6xl">🔓</span>
 				</div>
 				<h1 class="text-4xl md:text-6xl font-[family-name:var(--font-uncial)] text-gold-gradient animate-zoom-in-down">
-					Buena chica ;)
+					Buena chica
 				</h1>
 			</div>
 		</div>
@@ -142,7 +142,7 @@
 				La Cámara del Tesoro
 			</h1>
 			<p class="text-[#D2CFA0]/70 font-[family-name:var(--font-cinzel)] text-sm tracking-wide">
-				Ingresa el código de <span class="font-bold text-accent-gold">6</span> dígitos
+				Ingresa el código de <span class="font-bold text-accent-gold text-2xl">6</span> dígitos ;)
 			</p>
 		</div>
 
@@ -203,7 +203,7 @@
 					</p>
 				</div>
 				{#if hintMessage}
-					<p class="text-[#AC8400]/50 text-sm italic font-[family-name:var(--font-script)]">
+					<p class="text-[#AC8400] italic text-base font-[family-name:var(--font-script)]">
 						{hintMessage}
 					</p>
 				{/if}

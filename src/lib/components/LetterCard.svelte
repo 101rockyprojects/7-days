@@ -47,7 +47,7 @@
 			if (digitRegex.test(sentence)) {
 				return sentence.replace(
 					digitRegex,
-					'<span class="inline-block px-1 py-0.25 text-velvet-red font-bold rounded mx-0.25 text-4xl">$1</span>'
+					'<span class="inline-block px-1 py-0.25 text-crimson-dark font-bold rounded mx-0.25 text-5xl">$1</span>'
 				);
 			}
 			return sentence;
