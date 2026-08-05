@@ -75,11 +75,9 @@
 		}
 	}
 
-	// Initialize on mount
-	$effect(() => {
-		initDefaults();
-		loadSaved();
-	});
+	// Initialize once
+	initDefaults();
+	loadSaved();
 
 	// Auto-save on any change
 	$effect(() => {
