@@ -1,5 +1,5 @@
 {
-	"partnerName": "Mi Amor",
+	"partnerName": "Mi Reina",
 	"passcode": "060826",
 	"dateRange": {
 		"start": "2024-08-01",
@@ -8,14 +8,12 @@
 	"comfortMessages": [
 		"Cada número cuenta una historia de nosotros...",
 		"Tómate tu tiempo, yo estaré aquí esperando...",
-		"Los recuerdos valen más que cualquier código...",
-		"Piensa en nuestro viaje juntos...",
-		"Cada dígito guarda una parte de nuestro amor..."
+		"Puedes hacerlo, creo en ti..."
 	],
 	"hints": [
 		"Recuerda los números ocultos en nuestras cartas diarias...",
 		"Los dígitos secretos están repartidos en seis días de amor...",
-		"Cada carta contiene un solo dígito, del día 1 al día 6..."
+		"Es una fecha importante para mí..."
 	],
 	"phases": {
 		"letters": "Cartas Diarias",
