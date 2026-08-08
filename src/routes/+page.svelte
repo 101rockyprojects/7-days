@@ -8,7 +8,8 @@
 	import RobloxSection from '$lib/components/RobloxSection.svelte';
 	import OdysseyBook from '$lib/components/OdysseyBook.svelte';
 	import ReviewSection from '$lib/components/ReviewSection.svelte';
-	import LetterBackground from '$lib/components/LetterBackground.svelte';
+	import TapeSection from '$lib/components/TapeSection.svelte';
+	import ParallaxBackground from '$lib/components/ParallaxBackground.svelte';
 
 	import lettersData from '$lib/data/letters.json';
 	import indexData from '$lib/data/index.json';
@@ -113,16 +114,16 @@
 
 <div class="min-h-screen bg-[#0a0a0a] text-white relative">
 	<!-- Parallax Background -->
-	<LetterBackground backImage={bgImages.back} middleImage={bgImages.middle} frontImage={bgImages.front} day={selectedDay} />
+	<ParallaxBackground backImage={bgImages.back} middleImage={bgImages.middle} frontImage={bgImages.front} day={selectedDay} />
 
 	<!-- Transition Overlay -->
 	{#if isTransitioning}
 		<div class="fixed inset-0 z-[60] bg-[#0a0a0a] animate-fade-in-up" style="animation-duration: 0.3s;"></div>
 	{/if}
 
-	<!-- Navigation Header (top-left corner only) -->
+	<!-- Navigation Header -->
 	{#if currentPhase !== 'letters' || selectedDay !== 1}
-		<header class="fixed bottom-4 left-4 z-50">
+		<header class="fixed left-4 z-50 {currentPhase === 'letters' ? 'bottom-4' : 'top-4'}">
 			<button
 				onclick={handleBack}
 				class="flex items-center gap-2 px-3 py-2 glass rounded-lg border border-white/10 text-white hover:text-[#E8C84A] hover:border-[#AC8400] transition-all duration-200 group"
@@ -131,7 +132,9 @@
 				<svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
 				</svg>
-				<span class="font-[family-name:var(--font-cinzel)] text-xs tracking-wide">Volver</span>
+				{#if currentPhase !== 'menu' && currentPhase !== 'section'}
+					<span class="font-[family-name:var(--font-cinzel)] text-xs tracking-wide">Volver</span>
+				{/if}
 			</button>
 		</header>
 	{/if}
@@ -202,6 +205,8 @@
 				<ReceiptSection items={receiptData} />
 			{:else if activeSection === 'roblox'}
 				<RobloxSection data={robloxData} />
+			{:else if activeSection === 'tape'}
+				<TapeSection />
 			{:else if activeSection === 'odyssey'}
 				<OdysseyBook pages={odysseyData} />
 			{:else if activeSection === 'review'}

@@ -142,7 +142,7 @@
 		isSending = true;
 		const message = generateMessage();
 		const encoded = encodeURIComponent(message);
-		const url = `https://wa.me/${data.whatsappNumber}?text=${encoded}`;
+		const url = `https://api.whatsapp.com/send?phone=${data.whatsappNumber}&text=${encoded}`;
 
 		setTimeout(() => {
 			window.open(url, '_blank');
@@ -179,8 +179,8 @@
 					text: '#D2CFA0',
 					border: 'border-[#AC8400]/30',
 					inputBg: 'bg-[#2b0d0d]',
-					sliderTrack: '#2b0d0d',
-					sliderThumb: '#AC8400'
+					sliderTrack: '#B8962E',
+					sliderThumb: '#CC0000'
 				};
 			case 1: // Spicy - bordo/obscure
 				return {
@@ -194,9 +194,9 @@
 				};
 			case 2: // Coupons - light palette
 				return {
-					bg: 'bg-[#F5F0E1]',
+					bg: 'bg-[#121309]',
 					accent: '#722F37',
-					text: '#1A1410',
+					text: '#D2CFA0',
 					border: 'border-[#722F37]/30',
 					inputBg: 'bg-white',
 					sliderTrack: '#E8DCC8',
@@ -220,15 +220,10 @@
 	<!-- Header -->
 	<header class="sticky top-0 z-40 glass border-b border-white/10">
 		<div class="max-w-2xl mx-auto px-4 py-3">
-			<div class="flex items-center justify-between">
+			<div class="flex items-center justify-center">
 				<h2 class="font-[family-name:var(--font-felipa)] text-lg" style="color: {stepClasses.accent}">
 					{data.ui.title}
 				</h2>
-				{#if isSaved}
-					<span class="text-xs px-2 py-1 rounded-full bg-green-500/20 text-green-400 animate-fade-in-up">
-						{data.ui.savedIndicator}
-					</span>
-				{/if}
 			</div>
 
 			<!-- Step Progress -->
@@ -359,7 +354,7 @@
 							<h4 class="font-[family-name:var(--font-cinzel)] font-bold text-sm mb-1">{edit.title}</h4>
 							<p class="text-xs opacity-80 leading-tight">{edit.description}</p>
 							<div class="mt-3 pt-3 border-t border-current/20">
-								<span class="text-xs font-[family-name:var(--font-script)] italic">Canjeable cuando quieras</span>
+								<span class="text-3xl font-[family-name:var(--font-script)] italic">Ilimitado & Inexpirable</span>
 							</div>
 						</div>
 					{/each}
@@ -498,4 +493,12 @@
 			{/if}
 		</div>
 	</div>
+
+	{#if isSaved}
+		<div class="fixed bottom-16 left-1/2 -translate-x-1/2 z-50">
+			<span class="text-xs px-2 py-1 rounded-full bg-green-500/20 text-green-400 animate-fade-in-up whitespace-nowrap">
+				{data.ui.savedIndicator}
+			</span>
+		</div>
+	{/if}
 </div>

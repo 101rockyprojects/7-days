@@ -2,6 +2,8 @@
  * Date utility functions for the 7 Days of August project
  */
 
+import indexData from '$lib/data/index.json';
+
 const ARGENTINA_TZ = 'America/Argentina/Buenos_Aires';
 
 /**
@@ -45,9 +47,15 @@ export function getUnlockedDays(isDevMode = false, simulatedDay = null) {
 		return Array.from({ length: Math.min(simulatedDay, 7) }, (_, i) => i + 1);
 	}
 
+	// If current date is past dateRange.end, unlock everything
+	const now = getArgentinaDate();
+	const endDate = new Date(indexData.dateRange.end);
+	if (now.year > endDate.getFullYear() || (now.year === endDate.getFullYear() && (now.month > endDate.getMonth() + 1 || (now.month === endDate.getMonth() + 1 && now.day > endDate.getDate())))) {
+		return [1, 2, 3, 4, 5, 6, 7];
+	}
+
 	const currentDay = getCurrentAugustDay();
 	if (currentDay === 0) {
-		// Not in August, unlock nothing (or all for testing)
 		return [];
 	}
 

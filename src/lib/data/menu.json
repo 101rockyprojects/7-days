@@ -1,0 +1,38 @@
+{
+	"background": {
+		"back": "/images/main-bg-back.jpeg",
+		"middle": "/images/main-bg-middle.webp",
+		"front": "/images/main-bg-front.webp"
+	},
+	"days": [
+		{
+			"id": "roblox",
+			"title": "Nuestro Mundo",
+			"subtitle": "Memorias de Juegos",
+			"image": "/images/space-stranded.jpeg",
+			"active": false
+		},
+		{
+			"id": "receipt",
+			"title": "El Recibo",
+			"subtitle": "Servicios de Amor",
+			"image": "/images/receipt.webp",
+			"active": true
+		},
+		{
+			"id": "tape",
+			"title": "Awesome Mix Vol. 1",
+			"subtitle": "Nuestras canciones",
+			"image": "/images/tape-awesomemix.webp",
+			"active": true
+		},
+		{
+			"id": "review",
+			"title": "Tu Reseña",
+			"subtitle": "Califica Nuestro Amor",
+			"image": "/images/lighthome.jpeg",
+			"active": false,
+			"unlockDay": 7
+		}
+	]
+}

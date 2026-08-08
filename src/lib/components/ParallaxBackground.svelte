@@ -1,6 +1,6 @@
 <script>
 	/**
-	 * LetterBackground Component
+	 * ParallaxBackground Component
 	 * 2-layer parallax background driven by scroll + gyroscope
 	 * Renders transparent if no images provided
 	 */
