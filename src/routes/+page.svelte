@@ -195,6 +195,7 @@
 				onSelect={handleSectionSelect}
 				partnerName={indexData.partnerName}
 				{isDay7Unlocked}
+				{isDevMode}
 			/>
 		</div>
 
