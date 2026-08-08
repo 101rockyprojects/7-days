@@ -1,241 +1,201 @@
 <script>
 	/**
-	 * RobloxSection Component
-	 * Simulates a Roblox-style menu with experiences, achievements, and profile
-	 * Enhanced with authentic gaming UI aesthetics
+	 * RobloxSection → Time Machine
+	 * Live counter of days together since 2022-02-17
 	 */
 
+	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 
 	let { data = { experiences: [], achievements: [], profile: {} } } = $props();
 
-	// State
-	let activeTab = $state('experiences');
-	let hoveredCard = $state(null);
+	const START_DATE = new Date('2022-02-17T00:00:00');
 
-	// Tabs configuration
-	const tabs = [
-		{ id: 'experiences', label: 'Experiencias', icon: '🎮' },
-		{ id: 'achievements', label: 'Logros', icon: '🏆' },
-		{ id: 'profile', label: 'Perfil', icon: '👤' }
-	];
+	let now = $state(Date.now());
+	let elapsed = $derived(now - START_DATE.getTime());
 
-	// Format numbers
-	function formatNumber(num) {
-		if (num >= 1000) {
-			return (num / 1000).toFixed(1) + 'K';
-		}
-		return num.toString();
+	let days = $derived(Math.floor(elapsed / 86400000));
+	let hours = $derived(Math.floor((elapsed % 86400000) / 3600000));
+	let minutes = $derived(Math.floor((elapsed % 3600000) / 60000));
+	let seconds = $derived(Math.floor((elapsed % 60000) / 1000));
+
+	let timer;
+
+	onMount(() => {
+		timer = setInterval(() => { now = Date.now(); }, 1000);
+		return () => clearInterval(timer);
+	});
+
+	function pad(n) {
+		return n.toString().padStart(2, '0');
 	}
+
+	const milestones = [
+		{ icon: '💬', title: 'Primer Mensaje', date: '17 Feb 2022' },
+		{ icon: '📞', title: 'Primera Llamada', date: 'Marzo 2022' },
+		{ icon: '💯', title: '100 Días Juntos', date: 'Mayo 2022' },
+		{ icon: '🌙', title: 'Noche sin Dormir', date: '2022' },
+		{ icon: '✈️', title: 'Destructor de Distancias', date: '2023' },
+		{ icon: '❤️', title: 'Sanador de Corazones', date: '2023' }
+	];
 </script>
 
-<div class="min-h-screen bg-gradient-to-b from-[#1a0a0a] via-[#2b0d0d] to-[#1a0a0a] pb-20">
-	<!-- Content Area -->
-	<main class="max-w-6xl mx-auto px-4 py-6 md:py-8">
-		<!-- Experiences Tab -->
-		{#if activeTab === 'experiences'}
-			<section class="space-y-6">
-				<div class="flex items-center justify-between">
-					<h2 class="text-xl md:text-2xl font-[family-name:var(--font-slackey)] text-[#AC8400]">
-						🎮 Experiencias
-					</h2>
-					<span class="text-xs text-[#D2CFA0]/40 font-[family-name:var(--font-legible)]">
-						{data.experiences.length} experiencias
-					</span>
+<div class="min-h-screen bg-[#0a0a0a] pb-24">
+	<main class="max-w-5xl mx-auto px-4 py-12 md:py-20">
+
+		<!-- Hero Counter -->
+		<section class="text-center mb-16 md:mb-24">
+			<p class="text-[#D2CFA0]/40 text-xs font-[family-name:var(--font-cinzel)] tracking-[0.25em] uppercase mb-4">
+				Juntos desde el 17 de Febrero de 2022
+			</p>
+
+			<div class="relative inline-block">
+				<!-- Glow ring -->
+				<div class="absolute -inset-6 bg-[#AC8400]/5 rounded-full blur-2xl"></div>
+
+				<div class="relative bg-[#111] border border-[#AC8400]/10 rounded-3xl px-8 py-10 md:px-14 md:py-12">
+					<!-- Days -->
+					<div class="mb-6">
+						<span class="text-7xl md:text-8xl lg:text-9xl font-[family-name:var(--font-felipa)] text-[#E8C84A] leading-none tabular-nums">
+							{days.toLocaleString()}
+						</span>
+						<span class="block text-[#D2CFA0]/40 text-xs font-[family-name:var(--font-cinzel)] tracking-[0.2em] uppercase mt-2">
+							Días
+						</span>
+					</div>
+
+					<!-- Time breakdown -->
+					<div class="flex items-center justify-center gap-3 md:gap-5 text-[#D2CFA0]/60 font-[family-name:var(--font-cinzel)]">
+						<div class="text-center">
+							<span class="block text-2xl md:text-3xl text-[#E8C84A]/80 tabular-nums">{pad(hours)}</span>
+							<span class="text-[10px] tracking-[0.15em] uppercase">Horas</span>
+						</div>
+						<span class="text-[#AC8400]/30 text-lg">:</span>
+						<div class="text-center">
+							<span class="block text-2xl md:text-3xl text-[#E8C84A]/80 tabular-nums">{pad(minutes)}</span>
+							<span class="text-[10px] tracking-[0.15em] uppercase">Min</span>
+						</div>
+						<span class="text-[#AC8400]/30 text-lg">:</span>
+						<div class="text-center">
+							<span class="block text-2xl md:text-3xl text-[#E8C84A]/80 tabular-nums">{pad(seconds)}</span>
+							<span class="text-[10px] tracking-[0.15em] uppercase">Seg</span>
+						</div>
+					</div>
 				</div>
+			</div>
+		</section>
 
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-					{#each data.experiences as experience, index}
-						<button
-							onmouseenter={() => (hoveredCard = experience.title)}
-							onmouseleave={() => (hoveredCard = null)}
-							class="group relative bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/5 hover:border-[#AC8400]/30 transition-all duration-300 text-left"
-							style="animation-delay: {index * 100}ms"
-						>
-							<!-- Thumbnail -->
-							<div class="aspect-video bg-gradient-to-br from-[#2b0d0d] to-[#1a0a0a] relative overflow-hidden">
-								{#if experience.image}
-									<img
-										src="{base}{experience.image}"
-										alt={experience.title}
-										class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-										loading="lazy"
-									/>
-								{:else}
-									<div class="w-full h-full flex items-center justify-center">
-										<span class="text-5xl opacity-50 group-hover:opacity-75 group-hover:scale-110 transition-all duration-300">🎮</span>
-									</div>
-								{/if}
+		<!-- Stats Grid -->
+		<section class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-16 md:mb-24">
+			<div class="bg-[#111] border border-white/5 rounded-2xl p-5 text-center">
+				<div class="text-3xl md:text-4xl font-bold text-[#E8C84A] font-[family-name:var(--font-legible)] tabular-nums">
+					{days.toLocaleString()}
+				</div>
+				<div class="text-[10px] text-[#D2CFA0]/30 font-[family-name:var(--font-cinzel)] tracking-[0.15em] uppercase mt-1">
+					Días Juntos
+				</div>
+			</div>
 
-								<!-- Gradient Overlay -->
-								<div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent"></div>
+			<div class="bg-[#111] border border-white/5 rounded-2xl p-5 text-center">
+				<div class="text-3xl md:text-4xl font-bold text-[#E8C84A] font-[family-name:var(--font-legible)] tabular-nums">
+					{((data.profile.stats?.hoursTalked || 0) + Math.floor(elapsed / 3600000)).toLocaleString()}
+				</div>
+				<div class="text-[10px] text-[#D2CFA0]/30 font-[family-name:var(--font-cinzel)] tracking-[0.15em] uppercase mt-1">
+					Horas Habladas
+				</div>
+			</div>
 
-								<!-- Badge -->
-								<div class="absolute top-3 right-3">
-									<span class="px-2 py-0.5 bg-[#CC0000] text-white text-[10px] rounded font-bold uppercase tracking-wide shadow-lg">
-										NUEVO
+			<div class="bg-[#111] border border-white/5 rounded-2xl p-5 text-center">
+				<div class="text-3xl md:text-4xl font-bold text-[#E8C84A] font-[family-name:var(--font-legible)] tabular-nums">
+					{(data.profile.stats?.messagesSent || 0).toLocaleString()}
+				</div>
+				<div class="text-[10px] text-[#D2CFA0]/30 font-[family-name:var(--font-cinzel)] tracking-[0.15em] uppercase mt-1">
+					Mensajes
+				</div>
+			</div>
+
+			<div class="bg-[#111] border border-white/5 rounded-2xl p-5 text-center">
+				<div class="text-3xl md:text-4xl font-bold text-[#E8C84A] font-[family-name:var(--font-legible)] tabular-nums">
+					{data.profile.stats?.virtualDates || 0}
+				</div>
+				<div class="text-[10px] text-[#D2CFA0]/30 font-[family-name:var(--font-cinzel)] tracking-[0.15em] uppercase mt-1">
+					Citas Virtuales
+				</div>
+			</div>
+		</section>
+
+		<!-- Milestones Timeline -->
+		<section class="mb-16 md:mb-24">
+			<h2 class="text-xl md:text-2xl font-[family-name:var(--font-slackey)] text-[#AC8400] mb-8 text-center">
+				Momentos que nos definieron
+			</h2>
+
+			<div class="relative max-w-lg mx-auto">
+				<!-- Vertical line -->
+				<div class="absolute left-5 md:left-6 top-0 bottom-0 w-px bg-[#AC8400]/15"></div>
+
+				<div class="space-y-6">
+					{#each milestones as milestone, i}
+						<div class="relative flex items-start gap-4 md:gap-5 pl-12 md:pl-14">
+							<!-- Dot -->
+							<div class="absolute left-3 md:left-4 top-1 w-4 h-4 rounded-full bg-[#1a1a1a] border-2 border-[#AC8400]/40"></div>
+
+							<div>
+								<div class="flex items-center gap-2 mb-0.5">
+									<span class="text-lg">{milestone.icon}</span>
+									<span class="text-[#D2CFA0] font-[family-name:var(--font-slackey)] text-sm">
+										{milestone.title}
 									</span>
 								</div>
+								<span class="text-[#D2CFA0]/30 text-xs font-[family-name:var(--font-cinzel)] tracking-wider">
+									{milestone.date}
+								</span>
+							</div>
+						</div>
+					{/each}
+				</div>
+			</div>
+		</section>
 
-								<!-- Play Button Overlay -->
-								<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<div class="w-12 h-12 bg-[#AC8400] rounded-full flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform duration-300">
-										<svg class="w-5 h-5 text-[#0a0a0a] ml-0.5" fill="currentColor" viewBox="0 0 20 20">
-											<path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-										</svg>
-									</div>
+		<!-- Experiences Grid -->
+		<section>
+			<h2 class="text-xl md:text-2xl font-[family-name:var(--font-slackey)] text-[#AC8400] mb-8 text-center">
+				Nuestras Aventuras
+			</h2>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+				{#each data.experiences as experience}
+					<div class="group relative bg-[#111] rounded-2xl overflow-hidden border border-white/5 hover:border-[#AC8400]/20 transition-all duration-300">
+						<!-- Thumbnail -->
+						<div class="aspect-video bg-gradient-to-br from-[#1a0a0a] to-[#111] relative overflow-hidden">
+							{#if experience.image}
+								<img
+									src="{base}{experience.image}"
+									alt={experience.title}
+									class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+									loading="lazy"
+								/>
+							{:else}
+								<div class="w-full h-full flex items-center justify-center">
+									<span class="text-4xl opacity-30 group-hover:opacity-50 transition-opacity duration-300">📸</span>
 								</div>
-							</div>
+							{/if}
+							<div class="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent"></div>
+						</div>
 
-							<!-- Info -->
-							<div class="p-4">
-								<h3 class="text-[#D2CFA0] font-[family-name:var(--font-slackey)] text-base mb-1 group-hover:text-[#AC8400] transition-colors duration-200">
-									{experience.title}
-								</h3>
-								<p class="text-[#D2CFA0]/50 text-sm font-[family-name:var(--font-legible)] line-clamp-2">
-									{experience.description}
-								</p>
-							</div>
-						</button>
-					{/each}
-				</div>
-			</section>
-		{/if}
-
-		<!-- Achievements Tab -->
-		{#if activeTab === 'achievements'}
-			<section class="space-y-6">
-				<div class="flex items-center justify-between">
-					<h2 class="text-xl md:text-2xl font-[family-name:var(--font-slackey)] text-[#AC8400]">
-						🏆 Logros
-					</h2>
-					<span class="text-xs text-[#D2CFA0]/40 font-[family-name:var(--font-legible)]">
-						{data.achievements.length} desbloqueados
-					</span>
-				</div>
-
-				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-					{#each data.achievements as achievement, index}
-						<div
-							class="group relative bg-gradient-to-b from-[#2b0d0d] to-[#1a0a0a] rounded-xl p-4 text-center border border-white/5 hover:border-[#AC8400]/30 transition-all duration-300"
-							style="animation-delay: {index * 80}ms"
-						>
-							<!-- Badge Background -->
-							<div class="absolute inset-0 rounded-xl bg-gradient-to-b from-[#AC8400]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-							<!-- Icon -->
-							<div class="relative text-4xl md:text-5xl mb-3 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-								{achievement.icon}
-							</div>
-
-							<!-- Title -->
-							<h3 class="relative text-[#D2CFA0] font-[family-name:var(--font-slackey)] text-xs md:text-sm leading-tight">
-								{achievement.title}
+						<!-- Info -->
+						<div class="p-4">
+							<h3 class="text-[#D2CFA0] font-[family-name:var(--font-slackey)] text-sm mb-1 group-hover:text-[#E8C84A] transition-colors duration-200">
+								{experience.title}
 							</h3>
-
-							<!-- Sparkle Effect -->
-							<div class="absolute top-2 right-2 text-[#AC8400] text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-								✨
-							</div>
-
-							<!-- Unlocked Badge -->
-							<div class="mt-2 text-[10px] text-[#AC8400]/60 font-[family-name:var(--font-legible)] uppercase tracking-wider">
-								Desbloqueado
-							</div>
-						</div>
-					{/each}
-				</div>
-			</section>
-		{/if}
-
-		<!-- Profile Tab -->
-		{#if activeTab === 'profile'}
-			<section class="max-w-md mx-auto">
-				<h2 class="text-xl md:text-2xl font-[family-name:var(--font-slackey)] text-[#AC8400] mb-6 text-center">
-					👤 Perfil
-				</h2>
-
-				<div class="bg-gradient-to-b from-[#2b0d0d] to-[#1a0a0a] rounded-2xl p-6 md:p-8 border border-white/5">
-					<!-- Avatar -->
-					<div class="relative w-32 h-32 mx-auto mb-6">
-						<div class="absolute inset-0 bg-gradient-to-br from-[#AC8400] to-[#B8962E] rounded-full animate-pulse-glow"></div>
-						<div class="relative w-full h-full bg-gradient-to-br from-[#722F37] to-[#4A0404] rounded-full flex items-center justify-center text-5xl border-4 border-[#1a0a0a]">
-							👤
-						</div>
-						<!-- Online Indicator -->
-						<div class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-[#1a0a0a]"></div>
-					</div>
-
-					<!-- Username -->
-					<h3 class="text-xl text-[#D2CFA0] font-[family-name:var(--font-slackey)] text-center mb-1">
-						{data.profile.username}
-					</h3>
-
-					<!-- Bio -->
-					<p class="text-[#D2CFA0]/50 text-center font-[family-name:var(--font-legible)] text-sm mb-6">
-						{data.profile.bio}
-					</p>
-
-					<!-- Stats Grid -->
-					<div class="grid grid-cols-2 gap-3">
-						<div class="bg-[#0a0a0a] rounded-xl p-4 text-center border border-white/5">
-							<div class="text-xl md:text-2xl font-bold text-[#AC8400] font-[family-name:var(--font-legible)]">
-								{formatNumber(data.profile.stats?.hoursTalked || 0)}
-							</div>
-							<div class="text-[10px] text-[#D2CFA0]/40 font-[family-name:var(--font-legible)] uppercase tracking-wider mt-1">
-								Horas Habladas
-							</div>
-						</div>
-
-						<div class="bg-[#0a0a0a] rounded-xl p-4 text-center border border-white/5">
-							<div class="text-xl md:text-2xl font-bold text-[#AC8400] font-[family-name:var(--font-legible)]">
-								{formatNumber(data.profile.stats?.messagesSent || 0)}
-							</div>
-							<div class="text-[10px] text-[#D2CFA0]/40 font-[family-name:var(--font-legible)] uppercase tracking-wider mt-1">
-								Mensajes
-							</div>
-						</div>
-
-						<div class="bg-[#0a0a0a] rounded-xl p-4 text-center border border-white/5">
-							<div class="text-xl md:text-2xl font-bold text-[#AC8400] font-[family-name:var(--font-legible)]">
-								{(data.profile.stats?.daysTogether || 0).toLocaleString()}
-							</div>
-							<div class="text-[10px] text-[#D2CFA0]/40 font-[family-name:var(--font-legible)] uppercase tracking-wider mt-1">
-								Días Juntos
-							</div>
-						</div>
-
-						<div class="bg-[#0a0a0a] rounded-xl p-4 text-center border border-white/5">
-							<div class="text-xl md:text-2xl font-bold text-[#AC8400] font-[family-name:var(--font-legible)]">
-								{data.profile.stats?.virtualDates || 0}
-							</div>
-							<div class="text-[10px] text-[#D2CFA0]/40 font-[family-name:var(--font-legible)] uppercase tracking-wider mt-1">
-								Citas Virtuales
-							</div>
+							<p class="text-[#D2CFA0]/40 text-xs font-[family-name:var(--font-legible)] line-clamp-2">
+								{experience.description}
+							</p>
 						</div>
 					</div>
-				</div>
-			</section>
-		{/if}
-	</main>
-
-	<!-- Bottom Navigation Bar -->
-	<nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#1a1a1a]/95 backdrop-blur-md border-t border-[#AC8400]/20">
-		<div class="max-w-6xl mx-auto px-4">
-			<div class="flex items-center justify-center h-16 gap-2">
-				{#each tabs as tab}
-					<button
-						onclick={() => (activeTab = tab.id)}
-						class="flex-1 max-w-[120px] py-2 rounded-xl text-sm font-medium transition-all duration-200
-							{activeTab === tab.id
-								? 'bg-[#AC8400] text-[#0a0a0a] shadow-lg shadow-[#AC8400]/20'
-								: 'text-[#D2CFA0]/70 hover:text-[#D2CFA0] hover:bg-white/5'}"
-					>
-						<span class="block text-lg mb-0.5">{tab.icon}</span>
-						<span class="text-[10px]">{tab.label}</span>
-					</button>
 				{/each}
 			</div>
-		</div>
-	</nav>
+		</section>
+
+	</main>
 </div>
