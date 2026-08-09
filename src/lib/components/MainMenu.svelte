@@ -61,15 +61,15 @@
 	<div class="grid grid-cols-1 sm:grid-cols-2 gap-[4dvw] w-full max-w-5xl relative z-10">
 		{#each sections as section, i}
 			<button
-				class="menu-item group relative rounded-2xl cursor-pointer border-none p-0 text-left"
-				style="margin: {3 + i * 0.5}dvw; aspect-ratio: 4/3; object-fit: revert;"
+				class="menu-item group relative rounded-2xl cursor-pointer border-none p-0 text-left w-full max-w-[340px]"
+				style="margin: {3 + i * 0.5}dvw;"
 				onclick={() => onSelect(section.id)}
 				aria-label={section.title}
 			>
 				<img
 					src="{base}{section.image}"
 					alt={section.title}
-					class="menu-img w-full h-full object-cover transition-transform duration-500 ease-out"
+					class="menu-img w-full object-cover rounded-2xl transition-transform duration-500 ease-out"
 					class:scale-110={visible.has(section.id)}
 					loading="lazy"
 					use:setupObserver={section.id}
@@ -88,12 +88,6 @@
 			</button>
 		{/each}
 	</div>
-
-	<footer class="mt-10 md:mt-14 text-center relative z-10">
-		<p class="text-[#D2CFA0]/30 text-sm font-[family-name:var(--font-script)] italic">
-			Cada sección guarda una pieza de nuestra historia...
-		</p>
-	</footer>
 </div>
 
 <style>
@@ -116,7 +110,7 @@
 	.menu-item {
 		transform: rotate(var(--tilt, 0deg)) translate(var(--slide-x, 0), var(--slide-y, 0));
 		transition: transform 0.4s ease;
-		overflow: visible;
+		overflow: hidden;
 	}
 
 	.menu-item:nth-child(1) { transform: rotate(8deg) translate(15px, -10px); }
