@@ -64,8 +64,8 @@
 
 		{#if middleImage}
 			<div
-				class="letter-bg-layer middle-layer max-w-3xl mx-auto border-0"
-				style="transform: {middleTransform}; will-change: transform; {day === 1 ? '' : 'margin-top: 5%'} {day === 0 ? '' : ''}"
+				class="letter-bg-layer middle-layer max-w-3xl mx-auto"
+				style="transform: {middleTransform}; will-change: transform; {day === 1 ? '' : 'margin-top: 5%'}"
 			>
 				<img
 					src="{base}{middleImage}"
@@ -78,7 +78,7 @@
 
 		{#if frontImage}
 			<div
-				class="letter-bg-layer front-layer max-w-3xl mx-auto border-0"
+				class="letter-bg-layer front-layer max-w-3xl mx-auto"
 				style="transform: {frontTransform}; will-change: transform; {day === 1 ? 'margin-top: 10%' : ''}"
 			>
 				<img

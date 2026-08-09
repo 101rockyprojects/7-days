@@ -20,25 +20,15 @@
 
 	// Parse URL params for dev mode
 	const urlParams = parseUrlParams();
-	const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
 
 	// State management using Svelte 5 Runes
 	let isDevMode = $state(urlParams.isDevMode);
 	let simulatedDay = $state(urlParams.simulatedDay);
-	let currentPhase = $state(searchParams?.get('phase') || 'letters');
+	let currentPhase = $state('letters');
 	let selectedDay = $state(1);
 	let passcodeVerified = $state(false);
-	let activeSection = $state(searchParams?.get('phase') === 'section' ? searchParams?.get('section') : null);
+	let activeSection = $state(null);
 	let isTransitioning = $state(false);
-
-	// Sync phase to URL so refresh restores it
-	function syncPhaseToUrl() {
-		const params = new URLSearchParams(window.location.search);
-		params.set('phase', currentPhase);
-		if (currentPhase === 'section' && activeSection) params.set('section', activeSection);
-		else params.delete('section');
-		history.replaceState(null, '', `${window.location.pathname}?${params}`);
-	}
 
 	// Derived state
 	let unlockedDays = $derived(getUnlockedDays(isDevMode, simulatedDay));
@@ -90,7 +80,7 @@
 	// Handle passcode success
 	function handlePasscodeSuccess() {
 		passcodeVerified = true;
-		transitionTo('menu', () => syncPhaseToUrl());
+		transitionTo('menu', () => {});
 	}
 
 	// Handle passcode error
@@ -101,7 +91,7 @@
 	// Handle section selection from main menu
 	function handleSectionSelect(section) {
 		activeSection = section;
-		transitionTo('section', () => syncPhaseToUrl());
+		transitionTo('section', () => {});
 	}
 
 	// Handle back navigation
@@ -109,16 +99,10 @@
 		if (currentPhase === 'section') {
 			transitionTo('menu', () => {
 				activeSection = null;
-				syncPhaseToUrl();
 			});
 		} else if (currentPhase === 'menu' || currentPhase === 'vault') {
 			transitionTo('letters', () => {
 				selectedDay = 1;
-				const params = new URLSearchParams(window.location.search);
-				params.delete('phase');
-				params.delete('section');
-				const qs = params.toString();
-				history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : ''));
 			});
 		}
 	}
