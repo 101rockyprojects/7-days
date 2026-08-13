@@ -6,8 +6,16 @@
 	 */
 
 	import html2canvas from 'html2canvas';
+	import FloatingStickers from './FloatingStickers.svelte';
 
 	let { data } = $props();
+
+	const stickers = [
+		{ image: '/images/checked.webp', side: 'left', sideMargin: 1, bottom: '12%', rotate: -8, size: 'tiny' },
+		{ image: '/images/cardboard-fire-heart.webp', side: 'left', sideMargin: -0.75, bottom: '52%', rotate: -5, size: 'small' },
+		{ image: '/images/question-mark-block-3d.webp', side: 'right', sideMargin: -0.5, bottom: '32%', rotate: 13, size: 'tiny' },
+		{ image: '/images/pixelart-smily.webp', side: 'right', sideMargin: 0.25, bottom: '68%', rotate: 10, size: 'tiny' }
+	];
 
 	const STORAGE_KEY = 'review-data';
 
@@ -15,6 +23,11 @@
 	let currentStep = $state(0); // 0=rating, 1=spicy, 2=coupons, 3=send
 	let isSaved = $state(false);
 	let isSending = $state(false);
+
+	const dayNamesShort = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+	const monthNamesShort = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+	const now = new Date();
+	const todaySpanish = `${dayNamesShort[now.getDay()]}, ${now.getDate()} ${monthNamesShort[now.getMonth()]}`;
 
 	// Rating state
 	let ratings = $state({});
@@ -78,6 +91,10 @@
 	// Initialize once
 	initDefaults();
 	loadSaved();
+	// Re-apply colors from source data (localStorage may be stale)
+	data.coupons.forEach(coupon => {
+		couponEdits[coupon.id].color = couponEdits[coupon.id].color || coupon.color;
+	});
 
 	// Auto-save on any change
 	$effect(() => {
@@ -142,7 +159,7 @@
 		isSending = true;
 		const message = generateMessage();
 		const encoded = encodeURIComponent(message);
-		const url = `https://api.whatsapp.com/send?phone=${data.whatsappNumber}&text=${encoded}`;
+		const url = `https://wa.me/${data.whatsappNumber}?text=${encoded}`;
 
 		setTimeout(() => {
 			window.open(url, '_blank');
@@ -194,13 +211,13 @@
 				};
 			case 2: // Coupons - light palette
 				return {
-					bg: 'bg-[#121309]',
-					accent: '#722F37',
-					text: '#D2CFA0',
-					border: 'border-[#722F37]/30',
+					bg: 'bg-[#F5F0E1]',
+					accent: '#4A0404',
+					text: '#4A0404',
+					border: 'border-[#4A0404]/30',
 					inputBg: 'bg-white',
 					sliderTrack: '#E8DCC8',
-					sliderThumb: '#722F37'
+					sliderThumb: '#4A0404'
 				};
 			default:
 				return {
@@ -217,11 +234,12 @@
 </script>
 
 <div class="min-h-screen {stepClasses.bg} transition-colors duration-500">
+	<FloatingStickers {stickers} />
 	<!-- Header -->
 	<header class="sticky top-0 z-40 glass border-b border-white/10">
 		<div class="max-w-2xl mx-auto px-4 py-3">
 			<div class="flex items-center justify-center">
-				<h2 class="font-[family-name:var(--font-felipa)] text-lg" style="color: {stepClasses.accent}">
+				<h2 class="font-[family-name:var(--font-felipa)] text-3xl" style="color: {stepClasses.accent}">
 					{data.ui.title}
 				</h2>
 			</div>
@@ -337,8 +355,8 @@
 					<h3 class="text-2xl font-[family-name:var(--font-felipa)] mb-2" style="color: {stepClasses.accent}">
 						{data.ui.step3Title}
 					</h3>
-					<p class="text-sm" style="color: {stepClasses.text}80">
-						Descarga tus cupones especiales
+					<p class="text-sm italic" style="color: {stepClasses.text}">
+						Recuerda que un gran poder, conlleva una gran responsabilidad
 					</p>
 				</div>
 
@@ -348,13 +366,13 @@
 						<div
 							id="coupon-{coupon.id}"
 							class="coupon-card p-4 text-center"
-							style="background: {edit.color}15; color: {edit.color}; border-color: {edit.color}"
+							style="background: {edit.color}35; color: {edit.color}; border-color: {edit.color}"
 						>
 							<div class="text-3xl mb-2">{edit.icon}</div>
 							<h4 class="font-[family-name:var(--font-cinzel)] font-bold text-sm mb-1">{edit.title}</h4>
-							<p class="text-xs opacity-80 leading-tight">{edit.description}</p>
-							<div class="mt-3 pt-3 border-t border-current/20">
-								<span class="text-3xl font-[family-name:var(--font-script)] italic">Ilimitado & Inexpirable</span>
+							<p class="text-sm leading-tight">{edit.description}</p>
+							<div class="mt-3 pt-3 border-t border-black/5">
+								<span class="text-lg font-[family-name:var(--font-felipa)] italic">{todaySpanish}</span>
 							</div>
 						</div>
 					{/each}
