@@ -1,7 +1,15 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
+	import FloatingStickers from './FloatingStickers.svelte';
 
 	let { items = [] } = $props();
+
+	const stickers = [
+		{ image: '/images/credit-card.webp', side: 'left', sideMargin: 10, bottom: '22%', rotate: -9, size: 'large-front' },
+		{ image: '/images/grocery-bag.webp', side: 'left', sideMargin: 5, bottom: '69%', rotate: -1, size: 'large' },
+		{ image: '/images/shopping-cart.webp', side: 'right', sideMargin: 7, bottom: '10%', rotate: 11, size: 'medium' },
+		{ image: '/images/coins.webp', side: 'right', sideMargin: 9, bottom: '45%', rotate: 7, size: 'small' }
+	];
 
 	let scrollProgress = $state(0);
 	let viewportHeight = $state(800);
@@ -11,17 +19,14 @@
 	const PRINTER_BASE_TOP = 100;
 
 	function formatDate(dateStr) {
-		const d = new Date(dateStr);
-		const day = String(d.getDate()).padStart(2, '0');
-		const month = String(d.getMonth() + 1).padStart(2, '0');
-		const year = String(d.getFullYear()).slice(-2);
-		return `${day}-${month}-${year}`;
+		if (!dateStr) return 'TODOS-LOS-DÍAS';
+		return dateStr.split('-').reverse().join('-');
 	}
 
 	function truncatePrice(price) {
 		if (!price) return '';
 		const words = price.split(' ');
-		return words.slice(0, 2).join(' ');
+		return words.slice(0, 3).join(' ');
 	}
 
 	let reversedItems = $derived([...items].reverse());
@@ -81,6 +86,7 @@
 </script>
 
 <div class="fixed inset-0 bg-[#1a1a1a] overflow-hidden z-40">
+	<FloatingStickers {stickers} />
 	<!-- Background dots -->
 	<div class="absolute inset-0 opacity-[0.03] pointer-events-none"
 		style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 32px 32px;">
@@ -89,7 +95,7 @@
 	<!-- RECEIPT CONTAINER (positioned at printer base, overflow hidden at top) -->
 	<div 
 		class="absolute left-1/2 -translate-x-1/2 w-80 max-w-[95dvw] overflow-hidden z-20"
-		style="top: {PRINTER_BASE_TOP}px; height: {containerHeight}px;"
+		style="top: {PRINTER_BASE_TOP}px; height: {containerHeight}px; clip-path: polygon(50% 0%, 95% 0, 99% 1%, 100% 5%, 100% 100%, 50% 100%, 0 100%, 0 5%, 1% 1%, 5% 0);"
 	>
 		<!-- RECEIPT PAPER (scrolls inside container, starts above) -->
 		<div 
@@ -103,7 +109,7 @@
 
 				<!-- Header -->
 				<div class="px-4 pt-4 pb-4 text-center border-b-2 border-dashed border-[#1A1410]/40">
-					<p class="text-[14px] text-[#1A1410] font-pixel leading-loose">ROCKY AS A HUSBAND CO.</p>
+					<p class="text-[14px] text-[#1A1410] font-pixel leading-loose">ROCKY AS A BOYFRIEND CO.</p>
 					<p class="text-[10px] text-[#1A1410] font-pixel leading-tight">13600   ALCÁZAR DE SAN JUAN</p>
 					<p class="text-[10px] text-[#1A1410] font-pixel leading-tight">TELÉFONO:      685 5O 80 13</p>
 					<p class="text-[10px] text-[#1A1410] font-pixel leading-tight">01/07/2026  17:12  OP:06082003</p>
@@ -131,11 +137,10 @@
 						<div class="py-5 border-b border-[#1A1410]/20 last:border-0">
 							<div class="flex justify-between items-baseline mb-1">
 								<p class="text-xs text-[#1A1410]/50 font-pixel">{formatDate(item.date)}</p>
-								<p class="text-xs text-[#1A1410]/50 font-pixel">#{String(index + 1).padStart(4, '0')}</p>
+								<p class="text-xs text-[#1A1410]/50 font-pixel max-w-[175px] truncate">$ {truncatePrice(item.price)}</p>
 							</div>
 							<div class="flex justify-between items-baseline gap-2 mb-1">
-								<span class="text-sm font-bold text-[#1A1410] font-pixel">{item.service}</span>
-								<span class="text-sm font-bold text-[#1A1410] font-pixel whitespace-nowrap">$ {truncatePrice(item.price)}</span>
+								<span class="text-sm font-bold text-[#1A1410] font-pixel uppercase">{item.service}</span>
 							</div>
 							<p class="text-xs text-[#1A1410]/70 font-grid-single leading-relaxed">{item.description}</p>
 						</div>
@@ -145,10 +150,14 @@
 				<!-- Footer -->
 				<div class="px-4 py-4 border-t-2 border-dashed border-[#1A1410]/40">
 					<div class="text-center">
-						<p class="text-sm text-[#1A1410] font-pixel tracking-widest">TOTAL</p>
-						<p class="text-base font-bold text-[#1A1410] font-pixel mt-0.5">Todo lo que soy</p>
+						<br>
+						<p class="text-sm text-[#1A1410] font-pixel tracking-widest">SUBTOTAL: <strong>$ 15.5</strong></p>
+						<p class="text-sm text-[#1A1410] font-pixel tracking-widest">DESCUENTO POR FIDELIDAD: <strong>100%</strong></p>
+						<br>
+						<p class="text-lg font-bold text-[#af0808] font-pixel mt-0.5">TOTAL:<br>$ Ser mía por la eternidad</p>
 					</div>
-					<p class="text-center text-xs text-[#1A1410]/70 font-grid-single italic mt-3">¡Gracias por tu compra!</p>
+					<br>
+					<p class="text-center text-xs text-[#1A1410]/70 font-grid-single italic mt-3">¡Gracias por elegirme!</p>
 				</div>
 
 				<!-- Torn edge -->
@@ -174,7 +183,7 @@
 				</div>
 				<!-- Body -->
 				<div class="relative bg-gradient-to-b from-[#353535] to-[#2a2a2a] px-4 py-3 border-x-2 border-[#444] shadow-2xl">
-					<div class="flex items-center justify-between gap-3">
+					<div class="flex items-center justify-between gap-3 px-8">
 						<div class="flex items-center gap-2">
 							<div class="w-7 h-7 bg-gradient-to-br from-[#ff4444] to-[#cc0000] rounded-lg flex items-center justify-center shadow-md">
 								<span class="text-xs">💌</span>
