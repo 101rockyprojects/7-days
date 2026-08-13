@@ -1,5 +1,6 @@
 <script>
 	import { parseUrlParams, getUnlockedDays } from '$lib/utils/dateUtils.js';
+	import { base } from '$app/paths';
 	import DayMenu from '$lib/components/DayMenu.svelte';
 	import LetterCard from '$lib/components/LetterCard.svelte';
 	import PasscodeInput from '$lib/components/PasscodeInput.svelte';

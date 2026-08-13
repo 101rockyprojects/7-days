@@ -51,7 +51,7 @@
 		{#if backImage}
 			<div
 				class="letter-bg-layer back-layer"
-				style="transform: {backTransform}; will-change: transform;"
+				style="transform: {backTransform}; will-change: transform; {day === 0 ? 'filter: brightness(0.15);' : ''}"
 			>
 				<img
 					src="{base}{backImage}"
@@ -64,8 +64,8 @@
 
 		{#if middleImage}
 			<div
-				class="letter-bg-layer middle-layer max-w-3xl mx-auto"
-				style="transform: {middleTransform}; will-change: transform; {day === 1 ? '' : 'margin-top: 5%'}"
+				class="letter-bg-layer middle-layer {day === 0 ? 'max-w-[100dvw]' : 'max-w-3xl'} mx-auto"
+				style="transform: {middleTransform}; will-change: transform; {day === 0 ? 'filter: brightness(0.25);' : ''} {day === 1 ? '' : 'margin-top: 5%'}"
 			>
 				<img
 					src="{base}{middleImage}"
@@ -78,7 +78,7 @@
 
 		{#if frontImage}
 			<div
-				class="letter-bg-layer front-layer max-w-3xl mx-auto"
+				class="letter-bg-layer front-layer {day === 0 ? 'max-w-64' : 'max-w-3xl'} mx-auto"
 				style="transform: {frontTransform}; will-change: transform; {day === 1 ? 'margin-top: 10%' : ''}"
 			>
 				<img
