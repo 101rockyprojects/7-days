@@ -1,38 +1,209 @@
 [
 	{
-		"date": "2024-08-01",
-		"service": "Beso de Buenos Días",
-		"price": "Infinito amor",
-		"description": "Un beso suave para comenzar el día, entregado con calidez y cariño."
+		"service": "Mensaje de buenas noches",
+		"price": "Ternura",
+		"description": "Un último beso antes de ir a dormir."
 	},
 	{
-		"date": "2024-08-02",
-		"service": "Cine Virtual Nocturno",
-		"price": "Invalorable",
-		"description": "Una velada acogedora viendo nuestras películas favoritas juntos, kilómetros pero corazones unidos."
+		"service": "¿Cómo ameneces?",
+		"price": "Curiosidad",
+		"description": "Mi manera de saber si has descansado y despertado bien."
 	},
 	{
-		"date": "2024-08-03",
-		"service": "Charla Nocturna",
-		"price": "Sin precio",
-		"description": "Cuando el mundo duerme, compartimos nuestros sueños, miedos y todo lo que hay en el medio."
+		"service": "Mensaje de Buenos Días",
+		"price": "Ternura",
+		"description": "Un pequeño gesto para comenzar un gran día."
 	},
 	{
-		"date": "2024-08-04",
-		"service": "Entrega Sorpresa",
-		"price": "Eterno amor",
-		"description": "Un paquete inesperado lleno de amor, risas y pequeños recuerdos de nosotros."
+		"service": "Te amos",
+		"price": "Palabras de afirmación",
+		"description": "La expresión que no puede faltar en nuestra relación. Nunca son suficientes."
 	},
 	{
-		"date": "2024-08-05",
-		"service": "Cena Virtual Romántica",
-		"price": "Impagable",
-		"description": "Una cena a la luz de las velas a través de pantallas, compartiendo historias y miradas furtivas."
+		"service": "Apoyo incondicional",
+		"price": "Actos de servicio",
+		"description": "Ayudarnos cuando no es fácil y ser el pilar del otro cuando todo se vuelve difícil."
 	},
 	{
-		"date": "2024-08-06",
-		"service": "Promesa de Eternidad",
-		"price": "Infinito valor",
-		"description": "Una promesa de siempre estar ahí, a través de cada tormenta y cada amanecer."
+		"service": "Sorpresas y detalles",
+		"price": "Regalos",
+		"description": "Proyectos pequeños que creamos para el otro. Desde una carta, una foto, o incluso una página web."
+	},
+	{
+		"service": "Actualización del día",
+		"price": "Comunicación",
+		"description": "Instantes que compartimos para hacernos parte de nuestra rutina, y donde escuchamos con atención."
+	},
+	{
+		"service": "Citas, videollamadas y pelis",
+		"price": "Tiempo de calidad",
+		"description": "Disfrutar de la compañía del otro, con o sin distracciones, experimentando juntos."
+	},
+	{
+		"service": "Afecto y cariño",
+		"price": "Contacto",
+		"description": "La conexión emocional y corporal, que inició y sigue fortaleciendo nuestra relación."
+	},
+	{
+		"date": "2026-08-06",
+		"service": "Dulces 23",
+		"price": "Mi Milagrito",
+		"description": "Sigo aquí contigo, y siempre lo haré. Verás como todo lo que hemos soñado se dará poco a poco."
+	},
+	{
+		"date": "2026-05-28",
+		"service": "Mi pedacito de cielo",
+		"price": "Constancia",
+		"description": "Un proyecto creado para serte útil en tu día a día, y que sientas que tendrás mis manos dispuestas a ayudarte en tus objetivos."
+	},
+	{
+		"date": "2026-03-28",
+		"service": "Vitacora",
+		"price": "Constancia",
+		"description": "Un proyecto creado para serte útil en tu día a día, y que sientas que tendrás mis manos dispuestas a ayudarte en tus objetivos."
+	},
+	{
+		"date": "2026-01-01",
+		"service": "Año Mejor, Vida mejor",
+		"price": "Invaluable",
+		"description": "Nuevo entorno, nuevos obstáculos y nuevas oportunidades. Comenzamos con la frente en alto y avanzando los cimientos de nuestro futuro."
+	},
+	{
+		"date": "2025-08-28",
+		"service": "Primer contacto",
+		"price": "Conflicto necesario",
+		"description": "De improvisto, coincidí con tu madre para que me conociese y supiera quién es el chico del que tanto hablabas."
+	},
+	{
+		"date": "2025-08-06",
+		"service": "Primogénita",
+		"price": "Pañales virtuales",
+		"description": "Tuvimos en tu cumpleaños a nuestra primera hija en Avatar World. Tenía tus ojos y mi cabello."
+	},
+	{
+		"date": "2025-07-27",
+		"service": "Dibujo de nosotros",
+		"price": "Creatividad",
+		"description": "Tenías una idea, te ayudé a formarla y creaste una obra de arte que expresa cómo te sientes y cómo te he hecho sentir."
+	},
+	{
+		"date": "2025-04-08",
+		"service": "Grado de satisfacción",
+		"price": "Años de esfuerzo",
+		"description": "Me apoyaste en mis estudios y me acompañaste a mi graduación, te veías de lujo con tu suéter verde. Algún día te devolveré el favor."
+	},
+	{
+		"date": "2025-02-25",
+		"service": "Viviendo juntos",
+		"price": "Virtualmente",
+		"description": "Todo comenzó con un hola, y míranos en nuestro apartamento propio en Avatar World."
+	},
+	{
+		"date": "2025-02-14",
+		"service": "San Valentín",
+		"price": "Afortunadota",
+		"description": "Te pedí ser mi San Valentín, con todas las ventajas y desventajas de salir conmigo. Aceptaste y me hiciste sentir el hombre más afortunado del mundo."
+	},
+	{
+		"date": "2026-01-01",
+		"service": "Llamada en familia",
+		"price": "Integración",
+		"description": "Nos reunimos con mi madre y mis hermanos para presentarles formalmente al amor de mi vida."
+	},
+	{
+		"date": "2024-12-17",
+		"service": "2do Aniversario",
+		"price": "Compromiso mutuo",
+		"description": "Hemos pasado tantos momentos juntos y nuestro compromiso sigue siendo tan fuerte como el primer día."
+	},
+	{
+		"date": "2024-12-04",
+		"service": "Fin de curso",
+		"price": "Orgullo positivo",
+		"description": "Genuinamente orgulloso de tu rendimiento, no porque tu valor dependa de tus notas, sino porque reafirma que todo tu esfuerzo valió la pena."
+	},
+	{
+		"date": "2024-05-22",
+		"service": "Planeando la boda perfecta",
+		"price": "Expectativas",
+		"description": "Compartimos nuestros gustos y comparamos ideas para planear nuestra futura boda ideal."
+	},
+	{
+		"date": "2024-05-12",
+		"service": "Meloday",
+		"price": "Cancioncitas de amor",
+		"description": "Un proyecto que me tomó un día planear, un finde realizar y que llevaba años pensando quién sería la protagonista de aquella playlist."
+	},
+	{
+		"date": "2024-05-05",
+		"service": "Acuerdos de familia",
+		"price": "Crianza",
+		"description": "Coincidimos en tener 2 hijos y casarnos a los 27, discutimos porque querías un perro por cada hijo, a lo cual terminé accediendo."
+	},
+	{
+		"date": "2024-04-23",
+		"service": "Acta de Matrimonio",
+		"price": "Inifinito",
+		"description": "Juramos lealtad uno al otro, apoyándonos y amándonos por siempre. Documento firmado y avalado en Canva."
+	},
+	{
+		"date": "2024-01-01",
+		"service": "2do Feliz Año Nuevo",
+		"price": "Invaluable",
+		"description": "La prueba de un amor que ha superado los obstáculos iniciales y el paso del tiempo. Superamos la etapa del enamoramiento."
+	},
+	{
+		"date": "2023-12-17",
+		"service": "1er Aniversario",
+		"price": "Compromiso",
+		"description": "La primera decisión, la más importante de nuestra historia. A pesar de la distancia, prometimos luchar por algo real."
+	},
+	{
+		"date": "2023-XX-XX",
+		"service": "Reconquista de un corazón",
+		"price": "Invaluable",
+		"description": "No recuerdo la fecha exacta en que me convenciste de seguir juntos, y no me arrepiento ni un solo día de mi vida."
+	},
+	{
+		"date": "2023-06-21",
+		"service": "Consejos sobre 'estudiar'",
+		"price": "Orgullo",
+		"description": "Me escribiste buscando consejos porque te sentías abrumada por el estudio, y fue el catalizador para volver a conversar."
+	},
+	{
+		"date": "2023-11-18",
+		"service": "Te pedí ser mi chiquistrikis",
+		"price": "Risas",
+		"description": "Me dijiste que en tu corazón no estabas soltera, lo formalicé con una pregunta y aceptaste sin dudarlo."
+	},
+	{
+		"date": "2023-08-06",
+		"service": "Los 20s de la señorita",
+		"price": "Líquido de rodillas",
+		"description": "Te quejaste de tus rodillas en tus plenos 20 años y mi regalo de reconciliación fueron unas palabtas y fotos de mi parte. Aún me llamabas 'Steven'."
+	},
+	{
+		"date": "2023-05-28",
+		"service": "El mejor regalo",
+		"price": "Despiste",
+		"description": "Un regalo oculto e inesperado. Al inicio no era capaz de ver el amor, risas y pequeños recuerdos que me obsequió la vida."
+	},
+	{
+		"date": "2023-01-01",
+		"service": "Año Nuevo, Vida nueva",
+		"price": "Invaluable",
+		"description": "Un nuevo año y un deseo de uva que acababa de cumplirse. Ese brindis de fin de año fue el inicio de todo."
+	},
+	{
+		"date": "2022-12-18",
+		"service": "El reto de un amor a distancia",
+		"price": "Determinación",
+		"description": "Nos autoimpusimos que esto no fuese pasajero. Lo estamos cumpliendo de maravilla"
+	},
+	{
+		"date": "2022-12-17",
+		"service": "El Milagro hecho realidad",
+		"price": "Fe",
+		"description": "La primera decisión, la más importante de nuestra historia. A pesar de la distancia, prometimos luchar por algo real."
 	}
 ]

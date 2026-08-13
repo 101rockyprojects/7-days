@@ -15,14 +15,6 @@
 		"Los dígitos secretos están repartidos en seis días de amor...",
 		"Es una fecha importante para mí..."
 	],
-	"phases": {
-		"letters": "Cartas Diarias",
-		"vault": "La Cámara del Tesoro",
-		"menu": "Nuestro Mundo",
-		"receipt": "El Recibo de Amor",
-		"roblox": "Nuestras Aventuras",
-		"odyssey": "La Odisea"
-	},
 	"ui": {
 		"back": "Volver",
 		"revealSecret": "Revelar Secreto",

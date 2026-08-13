@@ -1,36 +1,48 @@
 {
 	"background": {
-		"back": "/images/main-bg-back.jpeg",
-		"middle": "/images/main-bg-middle.webp",
-		"front": "/images/main-bg-front.webp"
+		"back": "/images/main-bg-back.png",
+		"middle": "/images/main-bg-middle.webp"
 	},
+	"stickers": [
+		{ "image": "/images/2026-collage.webp", "side": "left", "sideMargin": 18, "bottom": "80%", "rotate": 0, "size": "extralarge" },
+		{ "image": "/images/fire-wood.webp", "side": "left", "sideMargin": 6, "bottom": "69%", "rotate": 9, "size": "medium" },
+		{ "image": "/images/minecraft-cat.webp", "side": "left", "sideMargin": 2, "bottom": "0%", "rotate": 8, "size": "extralarge" },
+		{ "image": "/images/wax-seal-letter-M.webp", "side": "right", "sideMargin": 7, "bottom": "22%", "rotate": 3, "size": "large" },
+		{ "image": "/images/sims.webp", "side": "left", "sideMargin": 5.1, "bottom": "38%", "rotate": 0, "size": "large" },
+		{ "image": "/images/cardborad-heart.webp", "side": "right", "sideMargin": 8, "bottom": "52%", "rotate": -7, "size": "small" },
+		{ "image": "/images/pointer-click.webp", "side": "right", "sideMargin": 12, "bottom": "-5%", "rotate": 0, "size": "large" }
+	],
 	"days": [
 		{
 			"id": "roblox",
-			"title": "Nuestro Mundo",
-			"subtitle": "Memorias de Juegos",
-			"image": "/images/space-stranded.jpeg",
+			"title": "Experiencias",
+			"subtitle": "Memorias destacadas",
+			"image": "/images/roblox-logo-3d.webp",
+			"aspectRatio": "square",
 			"active": false
 		},
 		{
 			"id": "receipt",
 			"title": "El Recibo",
 			"subtitle": "Servicios de Amor",
-			"image": "/images/receipt.webp",
+			"image": "/images/love-receipt.webp",
+			"aspectRatio": "vertical",
 			"active": true
 		},
 		{
 			"id": "tape",
-			"title": "Awesome Mix Vol. 1",
-			"subtitle": "Nuestras canciones",
-			"image": "/images/tape-awesomemix.webp",
+			"title": "Love Song",
+			"subtitle": "Nuestra canción",
+			"image": "/images/love-song.webp",
+			"aspectRatio": "square",
 			"active": true
 		},
 		{
 			"id": "review",
 			"title": "Tu Reseña",
 			"subtitle": "Califica Nuestro Amor",
-			"image": "/images/lighthome.jpeg",
+			"image": "/images/review-heart.webp",
+			"aspectRatio": "square",
 			"active": false,
 			"unlockDay": 7
 		}

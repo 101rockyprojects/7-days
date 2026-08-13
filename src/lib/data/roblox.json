@@ -1,50 +1,39 @@
 {
 	"experiences": [
 		{
-			"title": "Primera Cita Virtual",
-			"description": "Nuestra primera noche de cine oficial juntos por Discord.",
-			"image": "/images/exp-1.jpg"
+			"title": "Roblox",
+			"description": "Lo que más solemos jugar, múltiples experiencias, risas y estrés.",
+			"icon": "/images/roblox-3.jpeg",
+			"images": [
+				"/images/roblox-1.jpeg", "/images/roblox-2.jpeg", "/images/roblox-3.jpeg", "/images/roblox-4.jpeg",
+				"/images/roblox-5.jpeg", "/images/roblox-6.jpeg", "/images/roblox-7.jpeg"
+			]
 		},
 		{
-			"title": "Maratón de Juegos",
-			"description": "12 horas jugando juntos, riendo hasta que nos dolió el estómago.",
-			"image": "/images/exp-2.jpg"
+			"title": "Sky",
+			"description": "Una experiencia con paisajes preciosos, no podía dejar de apreciarlos volando a tu lado.",
+			"icon": "/images/sky-6.jpeg",
+			"images": [
+				"/images/sky-1.jpeg", "/images/sky-2.jpeg", "/images/sky-3.jpeg", "/images/sky-4.jpeg", "/images/sky-5.jpeg",
+				"/images/sky-6.jpeg", "/images/sky-7.jpeg", "/images/sky-8.jpeg", "/images/sky-9.jpeg", "/images/sky-10.jpeg"
+			]
 		},
 		{
-			"title": "Noche de Karaoke",
+			"title": "Juegos varios",
 			"description": "Cantando a todo pulmón, desafinados pero llenos de amor.",
-			"image": "/images/exp-3.jpg"
+			"icon": "/images/games-4.jpeg",
+			"images": [
+				"/images/games-1.jpeg", "/images/games-2.jpeg", "/images/games-3.jpeg",
+				"/images/games-4.jpeg", "/images/games-5.jpeg", "/images/games-6.jpeg"
+			]
 		},
 		{
-			"title": "Estudiando Juntos",
-			"description": "Compañía silenciosa mientras trabajamos en nuestras metas.",
-			"image": "/images/exp-4.jpg"
-		}
-	],
-	"achievements": [
-		{
-			"title": "Primer Mensaje",
-			"icon": "💬"
-		},
-		{
-			"title": "100 Días Juntos",
-			"icon": "💯"
-		},
-		{
-			"title": "Primera Llamada",
-			"icon": "📞"
-		},
-		{
-			"title": "Noche sin Dormir",
-			"icon": "🌙"
-		},
-		{
-			"title": "Destructor de Distancias",
-			"icon": "✈️"
-		},
-		{
-			"title": "Sanador de Corazones",
-			"icon": "❤️"
+			"title": "Trends",
+			"description": "Amo crear y hacer nuestros propios detalles o imitar los que vemos en Tiktok.",
+			"icon": "/images/trends-4.jpeg",
+			"images": [
+				"/images/trends-1.jpeg", "/images/trends-2.jpeg", "/images/trends-3.jpeg", "/images/trends-4.jpeg", "/images/trends-5.jpeg"
+			]
 		}
 	],
 	"profile": {
