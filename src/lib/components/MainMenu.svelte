@@ -6,7 +6,7 @@
 
 	import { onMount } from 'svelte';
 
-	let { onSelect, partnerName = 'Mi Amor', isDay7Unlocked = false, isDevMode = false } = $props();
+	let { onSelect, partnerName = 'Mi Amor', isDay7Unlocked = false } = $props();
 
 	let sections = $derived(
 		menuData.days.filter(s => !s.unlockDay || isDay7Unlocked)
@@ -66,15 +66,6 @@
 	}
 </script>
 
-{#if !isDevMode}
-<!-- TODO: remove this overlay when MainMenu is ready -->
-<div class="fixed inset-0 z-50 bg-[#0a0a0a] flex flex-col items-center justify-center gap-4" style="background: repeating-linear-gradient(45deg, #0a0a0a, #0a0a0a 20px, #1a1a00 20px, #1a1a00 40px);">
-	<span class="text-[#E8C84A] text-4xl font-[family-name:var(--font-felipa)]">🚧 En construcción 🚧</span>
-	<span class="text-[#E8C84A]/60 text-sm font-[family-name:var(--font-cinzel)]">Menú principal listo pronto</span>
-	<span class="text-[#E8C84A]/60 text-sm font-[family-name:var(--font-cinzel)] font-bold">No te desesperes, chiquita ;)</span>
-</div>
-{/if}
-
 <div class="min-h-screen bg-[#0a0a0a] flex flex-col items-center px-[2dvw] pt-20 pb-8 md:pt-24 md:pb-12 relative overflow-hidden">
 	<!-- Parallax Background -->
 	<!-- Parallax Background -->
@@ -100,8 +91,9 @@
 				class="menu-item group relative rounded-2xl cursor-pointer border-none p-0 text-left"
 				class:in-viewport={visible.has(section.id)}
 				class:zooming={zoomingSection === section.id}
+				class:disabled={section.disabled}
 				style="margin: {3 + i * 0.5}dvw; aspect-ratio: {section.aspectRatio === 'vertical' ? '3/4' : section.aspectRatio === 'horizontal' ? '4/3; max-width: 18em' : '1; max-width: 12em'};"
-				onclick={() => handleSelect(section.id)}
+				onclick={() => !section.disabled && handleSelect(section.id)}
 				ontransitionend={onZoomEnd}
 				aria-label={section.title}
 			>
@@ -112,16 +104,25 @@
 					use:trackNode={section.id}
 				/>
 
-				<div
-					class="tooltip-overlay absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-				>
+			<div
+				class="tooltip-overlay absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+			>
+				{#if section.disabled}
+					<span class="text-white w-max text-3xl md:text-4xl font-[family-name:var(--font-felipa)] drop-shadow-sm">
+						🚧 En construcción 🚧
+					</span>
+					<span class="text-white text-sm font-[family-name:var(--font-legible)] tracking-wider mt-1 italic text-balance text-center">
+						Contacte con su ingeniero de confianza
+					</span>
+				{:else}
 					<span class="text-white w-max text-3xl md:text-4xl font-[family-name:var(--font-felipa)] drop-shadow-lg">
 						{section.title}
 					</span>
 					<span class="text-white text-sm font-[family-name:var(--font-legible)] tracking-wider mt-1 italic">
 						{section.subtitle}
 					</span>
-				</div>
+				{/if}
+			</div>
 			</button>
 		{/each}
 	</div>
@@ -252,5 +253,14 @@
 
 	.menu-item.zooming .tooltip-overlay {
 		opacity: 0;
+	}
+
+	.menu-item.disabled {
+		pointer-events: none;
+	}
+
+	.menu-item.disabled .menu-img {
+		filter: blur(10px);
+		transform: rotate(45deg);
 	}
 </style>

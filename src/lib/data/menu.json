@@ -30,14 +30,6 @@
 			"active": true
 		},
 		{
-			"id": "tape",
-			"title": "Love Song",
-			"subtitle": "Nuestra canción",
-			"image": "/images/love-song.webp",
-			"aspectRatio": "square",
-			"active": true
-		},
-		{
 			"id": "review",
 			"title": "Tu Reseña",
 			"subtitle": "Califica Nuestro Amor",
@@ -45,6 +37,15 @@
 			"aspectRatio": "square",
 			"active": false,
 			"unlockDay": 7
+		},
+		{
+			"id": "tape",
+			"title": "Love Song",
+			"subtitle": "Nuestra canción",
+			"image": "/images/love-song.webp",
+			"aspectRatio": "square",
+			"active": true,
+			"disabled": true
 		}
 	]
 }
