@@ -118,14 +118,16 @@
 	}
 
 	.sticker.bounce {
-		animation: bounce 1.5s ease-in-out infinite;
+		animation: heartbeat 0.6125s ease-in-out infinite;
 	}
 
-	@keyframes bounce {
-		0%, 100% { translate: 0 0; }
-		25% { translate: 3px -5px; }
-		50% { translate: -2px -8px; }
-		75% { translate: -4px -3px; }
+	@keyframes heartbeat {
+		0%   { scale: 1; }
+		15%  { scale: 1.18; }
+		30%  { scale: 0.94; }
+		50%  { scale: 1.10; }
+		70%  { scale: 0.98; }
+		100% { scale: 1; }
 	}
 
 	.sticker-img {
