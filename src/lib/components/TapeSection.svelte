@@ -3,7 +3,7 @@
 	import ParallaxBackground from './ParallaxBackground.svelte';
 	import FloatingStickers from './FloatingStickers.svelte';
 
-	let { songUrl = `${base}/love-song.mp3`, isDevMode = false } = $props();
+	let { songUrl = `${base}/loco-loco.mp3` } = $props();
 
 	const stickers = [
 		{ image: '/images/ballon-letter-M.webp', side: 'left', sideMargin: 6, bottom: '30%', rotate: -5, size: 'large' },
@@ -45,14 +45,6 @@
 	}
 </script>
 
-{#if !isDevMode}
-<div class="fixed inset-0 z-50 bg-[#0a0a0a] flex flex-col items-center justify-center gap-4" style="background: repeating-linear-gradient(45deg, #0a0a0a, #0a0a0a 20px, #1a1a00 20px, #1a1a00 40px);">
-	<span class="text-[#E8C84A] text-4xl font-[family-name:var(--font-felipa)]">🚧 En construcción 🚧</span>
-	<span class="text-[#E8C84A]/60 text-sm font-[family-name:var(--font-cinzel)]">Sección lista pronto</span>
-	<span class="text-[#E8C84A]/60 text-sm font-[family-name:var(--font-cinzel)] font-bold">No te desesperes, chiquita ;)</span>
-</div>
-{/if}
-
 <div class="relative min-h-screen w-full overflow-hidden select-none">
 	<!-- Background -->
 	<ParallaxBackground backImage="/images/mix-bg.jpeg" middleImage="/images/lilies-right.webp" day={0} />
@@ -66,10 +58,10 @@
 		<!-- Title -->
 		<section class="text-center space-y-0">
 			<h1 class="text-4xl md:text-5xl font-[family-name:var(--font-uncial)] text-white text-center drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">
-				Love song
+				Loco Loco
 			</h1>
 			<p class="text-white text-lg md:text-xl font-[family-name:var(--font-felipa)] text-center italic">
-				Unseen Schaaf
+			    by @101rocky_bp w/ Suno
 			</p>
 		</section>
 

@@ -44,8 +44,7 @@
 			"subtitle": "Nuestra canción",
 			"image": "/images/love-song.webp",
 			"aspectRatio": "square",
-			"active": true,
-			"disabled": true
+			"active": true
 		}
 	]
 }
